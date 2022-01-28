@@ -1,0 +1,44 @@
+* {
+  margin: 0%;
+  padding: 0%;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  background: url("./img/0.jpg");
+  background-size: cover;
+  overflow: hidden;
+}
+h1 {
+  text-align: center;
+}
+.content {
+  width: 40rem;
+  height: 20rem;
+  margin: 0 auto;
+  margin-top: 15rem;
+  padding: 2rem;
+  z-index: 1;
+  position: relative;
+}
+
+.content::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-image: url("./img/0.jpg");
+  filter: blur(10px);
+  background-attachment: fixed;
+  background-size: cover;
+  z-index: -1;
+}
