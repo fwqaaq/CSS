@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .parallelogramX {
+      width: 100px;
+      height: 200px;
+      transform: skewX(20deg);
+      background-color: turquoise;
+    }
+
+    .parallelogramY {
+      width: 100px;
+      height: 200px;
+      transform: skewY(20deg);
+      background-color: turquoise;
+    }
+
+    .parallelogram {
+      width: 200px;
+      height: 100px;
+      position: relative;
+      font-size: 5rem;
+    }
+
+    .parallelogram::before {
+      position: absolute;
+      right: 0%;
+      left: 0%;
+      bottom: 0%;
+      top: 0%;
+      content: '';
+      background-color: violet;
+      transform: skew(20deg, 0);
+      z-index: -1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parallelogramX"></div>
+  <div class="parallelogramY"></div>
+  <div class="parallelogram">Click</div>
+</body>
+
+</html>
