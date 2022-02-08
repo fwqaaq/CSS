@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./base.css">
+  <style>
+    .pieChart {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: green;
+      background-image: linear-gradient(90deg, transparent 50%, #655 50%);
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(0.5turn);
+      }
+    }
+
+    @keyframes bg {
+      50% {
+        background: #655;
+      }
+    }
+
+    .pieChart::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 50%;
+      background-color: inherit;
+      border-radius: 0 100% 100% 0 /0 50% 50% 0;
+      transform-origin: left;
+      animation: spin 50s linear infinite, bg 100s step-end infinite;
+      animation-play-state: paused;
+      animation-delay: inherit;
+      width: 50%;
+      height: 100%;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="pieChart" style="animation-delay: -20s;"></div>
+  <div class="pieChart" style="animation-delay: -60s;"></div>
+</body>
+
+</html>

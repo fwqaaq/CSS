@@ -8,24 +8,35 @@
   <title>Document</title>
   <link rel="stylesheet" href="./base.css">
   <style>
-    .bg {
-      height: 20rem;
-      width: 20rem;
+    .box {
+      filter: drop-shadow(6px 10px 4px black);
+    }
+
+    img {
+      height: 12.5rem;
+      width: 25rem;
+      clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    }
+
+    .box2 {
+      height: 20%;
+      width: 20%;
       padding: 1rem;
       border: 1rem solid;
       border-image: repeating-linear-gradient(-225deg, red 0, red 1rem,
-          green 1rem, green 2rem,
-          blue 2rem, blue 3rem, green 3rem, green 4rem);
+          transparent 1rem, transparent 2rem,
+          blue 2rem, blue 3rem, transparent 3rem, transparent 4rem);
       border-image-slice: 16;
+      filter: drop-shadow(6px 10px 4px black);
     }
   </style>
 </head>
 
 <body>
-  <div class="bg">
-    remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
-    <div></div>
+  <div class="box">
+    <img src="./img/0.jpg" alt="">
   </div>
+  <div class="box2"></div>
 </body>
 
 </html>
