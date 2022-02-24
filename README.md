@@ -1,6 +1,8 @@
-# [CSS相关的基础](css.md)
+# [CSS相关的基础](css基础/css.md)
 
 >不做太多的拓展,非常基础需要掌握的问题
+
+* [css选择器](css基础/css选择器.md)
 
 ## [css布局问题](css布局/css布局.md)
 
@@ -14,7 +16,8 @@
 
 ### [视觉效果](css样式/视觉效果/视觉效果.md)
 
-## [关于SCSS](1、相关介绍.md)
+## [关于SCSS](scss/1、相关介绍.md)
 
-* [scss的环境配置](2、环境配置.md)
-* [scss语法](3、scss语法.md)
+* [scss的环境配置](scss/2、环境配置.md)
+
+* [scss语法](scss/3、scss语法.md)
