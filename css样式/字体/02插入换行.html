@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./base.css">
+  <style>
+    dd {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    dt,
+    dd {
+      display: inline;
+    }
+
+    dt+dd::before {
+      content: '\A';
+      white-space: pre;
+    }
+
+    dd+dd ::before {
+      content: ', ';
+      white-space: normal;
+    }
+  </style>
+</head>
+
+<body>
+  <dl>
+    <dt>Name:</dt>
+    <dd>Lea Verou</dd>
+    <dt>Email:</dt>
+    <dd>lea@verou.com</dd>
+    <dd>contentn:@verou.com</dd>
+    <dt>Location:</dt>
+    <dd>Earth</dd>
+  </dl>
+</body>
+
+</html>

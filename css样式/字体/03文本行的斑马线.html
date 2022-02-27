@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./base.css">
+  <style>
+    div{
+      height: 10rem;
+      white-space: pre-wrap;
+      width: 20rem;
+      height: auto;
+      background-color: beige;
+      background-image: 
+      linear-gradient(rgba(0,0,0,0.2) 0,rgba(0,0,0,0.2) 50%,transparent 50%);
+      padding:0.5rem;
+      background-size: auto 2rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div>
+    fn main() {
+      let v = Some(0_u8);
+      match v {
+        Some(1) => println!("one"),
+        _ => println!("other"),
+      }
+      if let Some(1) = v {
+        println!("one");
+      } else {
+        println!("other");
+      }
+    }
+  </div>
+</body>
+
+</html>

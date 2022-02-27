@@ -5,7 +5,7 @@
 >ex,em,rem的关系
 
 1. ex是字符x的高度,如果`font-size`越大,自然ex对应的也就越大
-2. em是字模的高度,不是字符的高度,一般有由`M`的宽度决定
+2. em是字模的高度,不是字符的高度,一般有由`m`的宽度决定
    * em是根据当前`font-size`大小计算的(一般设定布局祖先的font-size大小就可以实现弹性布局),一旦布局中出现根基础font-size不一样的场景时(例如h1),此作用域所有元素的en都要重新计算
 3. rem是相对于根元素`root em`:如果使用rem,计算值就不会受当前元素的`font-size`改变
 
@@ -16,7 +16,7 @@
 
 ### 字体属性
 
-1. 字体:`font-family:"Arial";`,属性可以写英文可以写中文
+1. 字体:`font-family:"arial";`,属性可以写英文可以写中文
 2. 字体粗细:`font-weight:属性;`,提倡用数字表示(无单位),
    * normal:不加粗,等同于400
    * bold: 加粗,等同于700
@@ -53,8 +53,8 @@
 
 1. **word-break**
    * `normal`:默认换行规则
-   * `break-all`:任意非CJK文本间的单词换行
-   * `keep-all`:不允许CJK文本中的单词换行,只能在半角空格或者连字符处换行.实际上和normal一致
+   * `break-all`:任意非cjk文本间的单词换行
+   * `keep-all`:不允许cjk文本中的单词换行,只能在半角空格或者连字符处换行.实际上和normal一致
 2. **word-wrap**
    * `normal`:默认换行规则
    * `break-word`:一行单词中实在没有其它靠谱的换行点时候换行
@@ -102,7 +102,7 @@
 
 > 文本颜色:`color:red`
 
-* 预定义颜色:red等; 十六进制:#FF0000等; RGB:rgb(255,0,0)
+* 预定义颜色:red等; 十六进制:#ff0000等; rgb:rgb(255,0,0)
 
 ### 文字阴影
 
@@ -115,3 +115,87 @@
 | v-shadow | 必需,垂直阴影的位置,允许负值 |
 | blur     | 可选,模糊距离(越大越模糊)    |
 | color    | 可选,阴影的颜色              |
+
+## 字体排印
+
+### [连字符断行](01连字符断行.html)
+
+> 在css3中引入了一个新的属性`hyphens`.
+
+* `hyphens`:接收三个参数.`none`,`manual`(初始值),`auto`
+  * manual:任何时候可以使用手动插入软连字符,来实现断词折行的效果.
+  * none:会禁用这种行为
+  * auto:会自懂的添加这种行为
+
+### [插入换行](02插入换行.html)
+
+>由于<dt>和<dd>都是块级元素,往往他们都会一个元素占一行.即使设置以下的操作
+
+```css
+dd{
+   margin:0;
+   font-size:bold;
+}
+```
+
+>当设置`display:inline`的时候会挤在一行.当然想到前文中的`white-space:pre;`属性
+
+* 只要给伪元素后加上换行符就可以换行
+
+```css
+dt,
+dd {
+  display: inline;
+}
+dd::after {
+  content: '\A';
+  white-space: pre;
+} 
+```
+
+>当我们再加一个邮箱<dd>时,发现这个邮箱并没有在单独一行中
+
+* 由于我们给每一个<dd>行尾都添加了一个换行符,每个值都会被分到单独一行
+* 所以我们只希望<dt>后的<dd>可以换行,只要<dd>后面还有<dd>就要使用,插入
+
+```css
+dt+dd::before {
+  content: '\A';
+  white-space: pre;
+}
+dd+dd ::before {
+  content: ', ';
+  white-space: normal;
+}
+```
+
+### [文本行的斑马线](03文本行的斑马线.html)
+
+>这就需要用到一个换行的属性(空白字符不合并)`white-space: pre-wrap;`
+
+```css
+div{
+   height: 10rem;
+   white-space: pre-wrap;
+   width: rem;
+   height: auto;
+   background-color: beige;
+}
+```
+
+* 使用渐变就可以完美的解决这种条纹的背景图像问题,当然每个渐变的长度应该时字体大小的两倍
+
+```css
+background-image: 
+linear-gradient(rgba(0,0,0,0.2) 0,rgba(0,0,0,0.2) 50%,transparent 50%);
+padding:0.5rem;
+background-size: auto 2rem;
+```
+
+> 由于文本行之间的空隙我们很难达到很好的效果,不过可以更改`background-origin`和`background-position`尽量达到想要的 效果
+
+### [调整tab的宽度](04tab的宽度.html)
+
+> 一般网页中的代码会用<pre>(pre不会破坏代码原来的样式,会一行行展示)或者<code>(将代码破坏成一行)显示
+
+* `tab-size:2`用于设置缩进尺寸.如果使用pre或者code,那这似乎并没有什么用处

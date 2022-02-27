@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./base.css">
+  <style>
+    code {
+      display: block;
+      position: relative;
+      margin: 1rem 0;
+      white-space: pre;
+      color: red;
+      tab-size: 2rem;
+    }
+
+    code::after {
+      position: absolute;
+      bottom: 0%;
+      right: 0%;
+      top: 0%;
+      left: 0%;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <code>
+    fn main() {
+      let v = Some(0_u8);
+      match v {
+        Some(1) => println!("one"),
+        _ => println!("other"),
+      }
+      if let Some(1) = v {
+        println!("one");
+      } else {
+        println!("other");
+      }
+    }
+  </code>
+</body>
+
+</html>
