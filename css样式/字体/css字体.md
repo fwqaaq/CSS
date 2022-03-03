@@ -74,7 +74,6 @@
   2. 单行文字溢出点点效果.`text-overflow:ellipsis;`
 
  ```css
- ```css
  .class{
    white-space:nowrap;
    overflow:hidden;
@@ -103,18 +102,6 @@
 > 文本颜色:`color:red`
 
 * 预定义颜色:red等; 十六进制:#ff0000等; rgb:rgb(255,0,0)
-
-### 文字阴影
-
-> css3:我们可以使用`text-shadow`属性为盒子添加阴影
-语法:`text-shadow:h-shadow v-shadow blur color;`
-
-| 值       | 描述                         |
-| -------- | ---------------------------- |
-| h-shadow | 必需,水平阴影的位置,允许负值 |
-| v-shadow | 必需,垂直阴影的位置,允许负值 |
-| blur     | 可选,模糊距离(越大越模糊)    |
-| color    | 可选,阴影的颜色              |
 
 ## 字体排印
 
@@ -199,3 +186,104 @@ background-size: auto 2rem;
 > 一般网页中的代码会用<pre>(pre不会破坏代码原来的样式,会一行行展示)或者<code>(将代码破坏成一行)显示
 
 * `tab-size:2`用于设置缩进尺寸.如果使用pre或者code,那这似乎并没有什么用处
+
+### 现实中的文字效果
+
+> css3:我们可以使用`text-shadow`属性为文字添加阴影
+
+* 语法:`text-shadow:h-shadow v-shadow blur color;`
+
+| 值       | 描述                         |
+| -------- | ---------------------------- |
+| h-shadow | 必需,水平阴影的位置,允许负值 |
+| v-shadow | 必需,垂直阴影的位置,允许负值 |
+| blur     | 可选,模糊距离(越大越模糊)    |
+| color    | 可选,阴影的颜色              |
+
+#### [凸版印刷效果](05凹版印刷效果.html)
+
+>使用凸版印刷效果,适用于中等亮度背景配上深色文字的场景.也可以用于深色底,浅色字的场景
+
+* 原理:出现在底部的浅色投影(或者出现在顶部的暗色投影)会让人产生物体是凹进平面内的错觉.同理出现啊在底部的暗色投影(或者出现在顶部的浅色投影)会让人产生物体从平面上凸起的感觉.
+
+> 如果背景使用浅色,文字使用深色时,在底部加上浅色投影的效果最佳
+
+```css
+.box {
+  font-size: 2rem;
+  height: auto;
+  background: hsl(210, 13%, 60%);
+  color: hsl(210, 13%, 30%);
+  text-shadow: 0 2px 2px hsla(0, 0%, 100%, 0.8);
+}
+```
+
+#### [空心字效果](05空心字效果.html)
+
+>使用text-shadow属性的扩张参数就可以让半径放大,看起来就像给文字勾边了一样.不过浏览器的支持海十分有限
+
+* 当然可以使用重叠多层轻微模糊的方式达到空心字效果
+
+```css
+.box {
+  background-color: black;
+  font-size: 5rem;
+  color: white;
+  text-shadow:
+    0 0 10px black, 0 0 10px black,
+    0 0 10px black, 0 0 10px black,
+    0 0 10px black, 0 0 10px black;
+}
+```
+
+#### [文字外发光效果](05文字外法光效果.html)
+
+>最简单的方式就是重叠基层`text-shadow`即可
+
+```css
+.box {
+  background-color: black;
+  font-size: 5rem;
+  color: rgb(189, 177, 70);
+  text-shadow:
+    0 0 1rem, 0 0 1rem;
+}
+```
+
+* 当然可以使用动画或者滤镜来使这种效果更好看
+
+```css
+.box {
+  background-color: black;
+  font-size: 5rem;
+  color: rgb(189, 177, 70);
+  transition: 1s;
+}
+
+.box:hover {
+  color: transparent;
+  text-shadow:
+    0 0 1rem rgb(189, 177, 70), 0 0 1rem rgb(189, 177, 70);
+  /* 使用滤镜达到这种效果 */
+  /* filter: blur(1rem); */
+}
+```
+
+#### [文字凸起效果](05文字凸起效果.html)
+
+>使用一长串的累加投影,不设置模糊并以1px的跨度逐渐错开,使颜色逐渐变暗,然后再底部加一层强烈模糊的按投影,从而模拟完整的立体效果
+
+```css
+.box {
+  background-color: #58a;
+  color: white;
+  font-size: 5rem;
+  text-shadow:
+    0 0.1rem hsl(0, 0%, 85%),
+    0 0.2rem hsl(0, 0%, 80%),
+    0 0.3rem hsl(0, 0%, 75%),
+    0 0.4rem hsl(0, 0%, 70%),
+    0 0.5rem hsl(0, 0%, 65%),
+    0 0.5rem 10px black;
+}
+```
