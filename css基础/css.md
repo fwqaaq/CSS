@@ -121,7 +121,7 @@ summary: css语法以及css3的相关内容,媒体查询,动画和盒子模型�
    * `word-break: break-all` break-all 对于non-CJK (CJK 指中文/日文/韩文) 文本,可在任意字符间断行.
 
 3. 最大宽度
-   * white-space CSS 属性是用来设置如何处理元素中的空白.
+   * `white-space` CSS 属性是用来设置如何处理元素中的空白.
    * 最大宽度就是元素可以有的最大宽度."最大宽度"实际等同于"包裹性"元素设置white-space: nowrap 声明后的宽度.(连续的空白符会被合并.但文本内的换行无效) 如果内部没有块级元素或者块级元素没有设定宽度值,则"最大宽度"实际上是最大的连续内联盒子的宽度
 
 #### css流体布局下的宽度分离原则
@@ -178,6 +178,29 @@ img {
 ```
 
 * 最小宽度比最大宽度设置得还要大,遵循"超越最大"规则(注意不是"后台者居上"规则) 值取`min-width,max-width`被忽略,于是,.container元素表现为至少1400像素宽
+
+#### width:fit-content
+
+> `fit-content`的样式表现形式就是css2.1的`shrink-to-fit`(包裹性).这种表现和元素应用于`display:inline-block`,`position:absolut`等css声明类似,尺寸收缩但不会包含块级元素的尺寸限制
+
+1. `fit-content`会让元素的尺寸有确定的值(关键)
+2. `min-width`属性和`max-width`会正确渲染`fit-content`关键字.但是`max-height`和`min-height`属性设置`fit-content`关键字虽然语法正确,但是不会有任何表现形式
+
+>width: stretch | available | fill-available.关键字
+
+* `stretch`:弹性拉伸,用于替换之前的 available, fill-available
+  * 一般`block`,`弹性布局`或者`网格布局`自动会默认自带这种弹性拉伸
+* `available`:可用空间.Firefox使用的关键字
+* `fill-available`:填充可用空间.webkit浏览器使用的关键字
+
+>`max-content`关键字表示最大内容宽度,作用是让元素尽可能的大
+
+1. 各项宽度不确定,整体宽度自适应
+2. 当前项的内容较少
+3. 当前项的宽度需要尽可能的小
+
+* 表格布局,弹性布局和网格布局都可以满足以上效果,这些布局自带与内容相关的尺寸规则.<span style="color:red">给子项设置`width:max-content`是没有任何效果的</span>
+* 当然`max-content`和`min-content`一样有兼容问题
 
 ### height:auto
 
@@ -954,18 +977,6 @@ html, body {
 ### 字体图标iconfont
 
 > 字体图白哦展示的是图标,本质属于字体
-
-### 鼠标样式
-
->鼠标样式:`cursor:pointer;`
-
-| 属性值      | 描述 |
-| ----------- | ---- |
-| default     | 默认 |
-| pointer     | 小手 |
-| move        | 移动 |
-| text        | 文本 |
-| not-allowed | 禁止 |
 
 ### 表单轮廓线
 
