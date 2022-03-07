@@ -39,44 +39,12 @@ summary: css语法以及css3的相关内容,媒体查询,动画和盒子模型�
 1. 正常流宽度默认是`100%`
    * 在页面中随便扔一个div元素,其尺寸表现就会和水流一样铺满容器.这就 是block 容器的流特性.
    * 所谓流动性是一种根据`margin/border/padding/content`属性对其内容区域自动分配水平空间的机制
-  
-   ```html
-   <style>
-   .width {
-     width: 100%;
-   }
-   .nav {
-     background-color: #cd0000;
-   }
-   .nav-a {
-     display: block;
-     margin: 0 10px;
-     padding: 9px 10px;
-     border-bottom: 1px solid #b70000;
-     border-top: 1px solid #de3636;
-     color: #fff;
-   }
-   .nav-a:first-child {
-     border-top: 0;
-   }
-   .nav-a + .nav-a + .nav-a {
-     border-bottom: 0;
-   }
-   </style>
-   ...
-   <h4>无宽度,借助流动性</h4>
-   <div class="nav">
-     <a href="" class="nav-a">导航1</a>
-     <a href="" class="nav-a">导航2</a>
-     <a href="" class="nav-a">导航3</a>
-   </div>
-   <h4>width:100%</h4>
-   <div class="nav">
-     <a href="" class="nav-a width">导航1</a>
-     <a href="" class="nav-a width">导航2</a>
-     <a href="" class="nav-a width">导航3</a>
-   </div>
-   ```
+   
+<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/jack-zhang-1314/embed/WNXmWdJ?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/WNXmWdJ">
+  Untitled</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 
 2. 格式化宽度
    * 格式化宽度仅出现在"绝对定位模型"中,也就是出现在position属性值为absolute和fixed的元素中,在预设情况下绝对定位元素的宽度表现是"包裹性","宽度由内部尺寸决定",但是有一中情况下由外部尺寸决定.
@@ -479,7 +447,7 @@ html, body {
 * 区分:给父级设置`overflow:auto`,如果层叠区域超出父容器,没有出现滚动条,则是纯视觉的;如果出现滚动条,则会影响尺寸,影响布局
 
 1. padding属性用于设置内边距,即边框与内容之间的距离
-  
+
 | 属性           | 作用     |
 | -------------- | -------- |
 | padding-left   | 左内边距 |
@@ -646,7 +614,7 @@ html, body {
 * 例如`line-height`设为16px,则一行文字高度就是16px,两行就是32px
 
 > 内联元素`垂直居中(line-height)`
-  
+
 * 直接设置`line-height`的大小就可以使内联元素近似垂直居中,而不需要设置`line-height=height`
 * 多行文本或者替换元素的垂直居中实现原理和单行文本就不一样,需要设置`vertical-align`属性
 
@@ -779,7 +747,7 @@ html, body {
        <div style="float:right">不错</div>
        <div class="clear"></div><!-- 且新增的盒子必须是块级元素,不能是行内元素 -->
       </div> 
-       ```
+      ```
 
    2. 父级添加overflow属性<span style="color:red">缺点:无法显示溢出部分</span>
 
@@ -830,91 +798,6 @@ html, body {
       <div style="float:right">真的</div>
     </div> 
     ```
-
-## 定位
-
-### 定位的意义
-
-> 1. 浮动可以让多个块级盒子一行没有缝隙排列显示,经常用于横向排列盒子
-> 2. 定位则是可以让盒子自由的在某个盒子内移动位置或者固定在屏幕中某个位置,并且可以压住其他盒子
-
-### 定位的组成
-
->* 定位:将盒子定在某一个位置,所以定位也是摆放盒子,按照定位的方式移动盒子.<span style="color:red">定位=定位模式+边偏移</span>
->* 定时模式用于指定元素在文档中的定位方式.边偏移则决定了该元素的最终位置
-
-1. 定位模式:通过css的```position```属性来设定
-
-   | 值       | 语义     |
-   | -------- | -------- |
-   | static   | 静态定位 |
-   | relative | 相对定位 |
-   | absolute | 绝对定位 |
-   | fixed    | 固定定位 |
-
-2. 边偏移:top,bottom,left,right4个值(相对于父元素而言)
-
-### 静态定位
-
-* 按照标准流特性摆放,没有边偏移
-
-### 相对定位relative
-
-* 相对定位是元素移动的时候,相对于原来的位置来说```position:relative;```
-
-* 特点:
-   1. 他是相对于子级原来的位置移动的(<span style="color:red">移动位置的时候参照点是自己原来的位置</span>)
-   2. 原来在标准流的位置继续占有,后面的盒子任然以标准流的方式对待它(<span style="color:red">不脱标,继续保留原来的位置</span>)
-
-### 绝对定位absolute
-
-* 绝对定位是在元素移动位置的时候,相对于它祖先元素来说的```position:absoulte;```
-
-* 特点:
-   1. 如果没有祖先元素或者祖先元素没有定位,以浏览器定位为准(Document文档)
-   2. 如果祖先元素有定位(相对,绝对,固定),则以最近一级的有定位祖先元素为参考点移动位置
-   3. 绝对定位<span style="color:red">不再占有原来的位置</span>(脱离标准流)
-
-### 子绝父相
-
-1. 子级绝对定位,不会占有位置,可以放到父盒子里面的任何一个地方,不会影响其它的兄弟盒子
-2. 父盒子需要加定位限制子盒子在父盒子内显示
-3. 父盒子布局时,需要占有位置,因此父亲只能是相对定位
-
-### 固定定位(fixed)
-
-* 固定定位是固定于浏览器的可视区的位置,可在浏览器滚动时元素的位置不会改变```position:fixed;```
-
-* 特点:
-   1. 以浏览器的可是窗口为参照点移动元素. 
-      * 跟父元素没有任何关系
-      * 不随滚动条移动
-   2. 固定定位<span style="color:red">不再占有原先的位置</span>
-      * 固定定位也是脱标的,其实固定定位也可以看作是一种特殊的绝对定位
-
-### 粘性定位(sticky)
-
-* 粘性定位可以被认为是相对定位和固定定位的混合```position:sticky;```
-
-* 特点:
-   1. 以浏览的可视窗口为参照点移动元素(固定定位特点)
-   2. 粘性定位占有原先的位置(相对定位特点)
-   3. 必须添加top,bottom,left,right其中一个才有效
-
-### 定位叠放次序z-index
-
-> 使用z-index来控制盒子的前后次序(z轴)```z-index:1;```
-
-* 数值可以是正整数,负整数或0,默认是auto,数值越大,盒子越靠上
-* 如果属性相同,则按照书写顺序,后来居上
-* 数字后面不能加单位
-* 只有定位的盒子才有z-index
-
-### 定位的特殊性
-
-1. 行内元素添加绝对或者固定定位,可以直接设置高度和宽度
-2. 块级元素添加绝对或者固定定位,如果不给宽度或者高度,默认是内容的大小
-3. 绝对定位(固定定位)会完全压住盒子.浮动元素不会,只会眼珠它下面的标准流盒子,但是不会压住标准流盒子里面的文字,<span style="color:red">浮动可以做文字环绕效果.</span>
 
 ## 显示与隐藏
 
@@ -967,16 +850,31 @@ html, body {
 
 ### overflow 溢出
 
+> `overflow-x` 和`overflow-y`分别表示单独控制水平或者垂直方向的裁剪规则.当两个值除非都设置为`visible`,否则visible都会被当作auto来解析.也就是永远不能设置为一个方向溢出裁剪或者滚动,另一方向溢出显示的效果
+
+```css
+html{
+    overflow-x:hidden;
+    overflow-y:auto;/*多余的*/
+}
+```
+
 * `overflow:visible;`,默认值,显示可见
-* `overflow:hidden;`,隐藏溢出
+* `overflow:hidden;`,裁剪溢出
 * `overflow:scroll;`,不管有没有溢出都显示滚动条
 * `overflow:auto;`,有溢出,才显示滚动条
+
+> overflow与滚动条
+
+* html中只有两个标签产生滚动条,<html>和<textarea>,因为他们的属性值默认是auto
+
+
 
 ## CSS技巧
 
 ### 字体图标iconfont
 
-> 字体图白哦展示的是图标,本质属于字体
+> 字体图标展示的是图标,本质属于字体
 
 ### 表单轮廓线
 
