@@ -6,18 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    p {
+      border: solid deepskyblue;
+      width: 150px;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    img {
+      position: absolute;
+    }
+
+    .transform {
+      transform: scale(1);
+    }
+  </style>
 </head>
-<style>
-  p {
-    font-size: 20px;
-    background: linear-gradient(#ff0099, #493240);
-    background-clip: text;
-    color: transparent;
-  }
-</style>
 
 <body>
-  <p>我是渐变</p>
+  <p>
+    <img src="./css样式/形状/img/0.jpg" width="250px" height="200px" alt="">
+  </p>
+  <p class="transform">
+    <img src="./css样式/形状/img/0.jpg" width="150px" height="200px" alt="">
+  </p>
 </body>
 
 </html>

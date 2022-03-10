@@ -198,3 +198,84 @@ input{
 CSS.supports("display:flex")
 CSS.supports("display","flex")
 ```
+
+## calc()
+
+>calc()支持加减乘除四种运算,任何可以使用<length>,<frequency>,<angle>,<item>,<percentage>,<number>或者<integer>数据类型的地方可以使用calc()函数
+
+1. 不能使用css不支持的数据类型
+2. 不能再css前后都带单位或者白粉后的值进行乘除运算,只能进行加减运算
+
+   ```css
+   <!-- 不合法 -->
+   width:calc(10px * 10px);
+   width:calc(90% - 1rem);
+   ```
+
+3. 除法运算右侧必须是不为0的数
+4. clac()运算符的**加号/减号**左右两边一定要有空格
+5. calc()可以支持嵌套使用
+
+```css
+.list{
+  --size:calc(100% - 2rem);
+  width:calc(var(--size) / 6);
+}
+```
+
+## min(),max()和clamp()函数
+
+>和calc()类似,任何可以使用<length>,<frequency>,<angle>,<item>,<percentage>,<number>或者<integer>数据类型的地方可以使用这三个函数
+
+* min(),max()和clamp()可以和calc()嵌套使用
+
+```css
+width:calc(min(800px,100vw) / 6);
+```
+
+>min()函数:`min(expression[,expression])`
+
+* `min()`函数支持一个或者多个表达式,每个表达式之间使用逗号分割,然后将最小的表达式的值最为返回值
+* 虽然函数的名称是min(),但是实际上是用来限制最大的.例如以下,只要视口宽度小于800px或者字体大小小于16px,就会返回比80px更小的值
+
+   ```css
+   width:min(10vw,5em,80px)
+   ```
+
+* min()函数中使用算数运算符,具体的值或者其它的表达式
+
+   ```css
+   width:min(10px * 10, 10em)
+   width:min(calc(10px * 10), 10em)
+   width:min(calc(10px * 10), var(--width))
+   ```
+
+* 例如在网页端浏览器宽度为`1024px`,在移动端宽度为`100%`
+  
+  ```css
+  <!-- 过去 -->
+  .constr{
+    width:1024px;
+    max-width:100%;
+  }
+  <!-- 现在 -->
+  .constr{
+    width:min(100%,1024px);
+  }
+  ```
+
+>max()函数:和min()的区别是返回最大值
+
+* max()函数实际作用就是限制最小值.他返回的不会比80px更小
+
+   ```css
+   width:max(10vw,5em,80px)
+   ```
+
+>clamp()函数返回一个区间范围的值
+
+* 语法:`clamp(MIN,VALUE,MAX)`.MIN表示最小值,VALUE表示首选值,MAX表示最大值
+  * 如果VALUE在MIN~MAX范围内,则使用VALUE作为函数返回值.
+  * 如果VALUE大于MAX,则使用MAX作为返回值
+  * 如果VALUE小于MIN,则使用MIN作为返回值
+* `clamp(MIN,VALUE,MAX)`实际上等同于`max(MIN,min(VALUE,MAX))`
