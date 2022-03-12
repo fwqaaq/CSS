@@ -10,6 +10,7 @@
 ## css动画
 
 * [css的2D/3D动画](./css动画/CSS动画2D-3D.md)
+* [css渐变](./css动画/渐变.md)
 
 ## [css布局问题](css布局/css布局.md)
 
