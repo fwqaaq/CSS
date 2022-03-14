@@ -323,3 +323,13 @@ img{
 
 * 设置`backface-visibility:hidden`之后,绕y轴旋转225°后元素被隐藏了.由于`rotateY`在值大于180°,小于360°的时候,我们看到的就是元素的背面了
 * `backface-visibility:visible`之后元素即使绕y轴旋转225°后还是清晰可见
+
+### 3D变换与性能加速
+
+```css
+transform: translate(-100px, 0); 
+transform: translate3d(-100px, 0, 0);
+```
+
+* 上面两种写法一模一样,不过使用3d可以开启GPU加速.变换效果性能要更高
+* 单纯的2d变换完全没有理由去使用3d变换
