@@ -191,27 +191,135 @@ transform-origin:top right;
 
 ## 3D转换
 
-* 主要内容
-  * 3D位移(简写):```transform:translate3d(x,y,z);```
-    * ```transform:translateX(100px);```仅仅是在x轴上运动  
-    * ```transform:translateY(100px);```仅仅是在y轴上运动  
-    * ```transform:translateZ(100px);```仅仅是在z轴上运动(后面的单位一般跟px) 
-  * 透视:```perspective:200px;```单位像素,数值越大物体越大,数值越小越立体
-    * <span style="color:red">透视写在被观察元素的父盒子上面</span>
-    * 视距是一个人眼睛到屏幕的距离
-    * z是z周,物体距离屏幕的距离,z轴越大,看到的物体越大
-  * 3D呈现```transform-style```
-    * 控制子元素是否开启三维立体环境
-    * ```transform-style:flat;```子元素不开启sd立体空间,默认
-    * ```transform-style:preserve-3d;```子元素开启sd立体空间
-    * 代码写给父级,但是影响的是子盒子
-    * 重要
+>* 3D位移变换函数包括`translateX()`,`translateY()`,和`translateZ()`.其中`translateX()`,`translateY()`是2D变换.只有`translateZ()`的是3D变换
+>* CSS缩放函数(scale())依然只有`scaleZ()`属于3D变换
+>* 斜切skew()没有3D变换
+>* 旋转变换函数`rotate()`,`rotateX()`,`rotateY()`,`rotateZ()`均是属于3D变换的
 
-* 3D旋转rotate3d
-  * ```transform:rotateX(45deg)```: 沿着x轴正方向旋转45度
-    * 左手准则:拇指沿着x正轴,四指弯曲的方向就是旋转方向
-  * ```transform:rotateY(45deg)```: 沿着Y轴正方向旋转45度
-    * 左手准则:拇指沿着y正轴,四指弯曲的方向就是旋转方向(正值)
-  * ```transform:rotateZ(45deg)```: 沿着Z轴正方向旋转45度
-  * ```transform:rotatesd(x,y,z,deg)```: 沿着自定义方向旋转deg度
-    * x,y,z表示矢量 ```transform:rotatesd(1,1,0,deg)```(即对角线)
+* 3D坐标,箭头所指的方向是偏移正值所对应的方向
+* ![3D坐标](img/3D坐标.png)
+
+### rotate3d()
+
+```css
+rotate3d(x,y,z,angle)
+```
+
+* angle表示绕着(0,0,0),(x,y,z)的向量旋转.正数表示顺时针,负数表示逆时针
+* 例如以下就是表示绕着坐标(0,0,0)和(1,1,1)连成的向量线旋转45°
+* ![rotate3D](img/rotate3D.png)
+
+>然而rotate3d()很难被使用到,使用更高频率的是`rotateX()`,`rotateY()`,`rotateZ()`
+
+* `rotateX(angle)`:绕X轴旋转
+* `rotateY(angle)`:绕Y轴旋转
+* `rotateZ(angle)`:绕Z轴旋转
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="ROTATE" src="https://codepen.io/jack-zhang-1314/embed/oNpgZoe?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/oNpgZoe">
+  ROTATE</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### perspective
+
+>perspective(透视)决定你所看到的画面是二维的还是三维的
+
+```css
+img{
+    perspective: 2000px;
+}
+```
+
+* 这就意味着这张图片的3D视觉效果和本人在距离1.2个显示器宽度 远的地方（1680×1.2≈2000）所看到的真实效果是一致的
+* ![perspective](./img/perspective.png)
+
+> `perspective`的两种写法
+
+1. 设置在3D渲染元素的共同父元素
+
+   ```css
+   .stage{
+       perspective:600px;
+   }
+   .box{
+       transform:rotateY(45deg);
+   }
+   ```
+
+2. 也可以设置在当前3D渲染元素
+
+   ```css
+   .stage .box{
+       transform:perspective(600px) rotateY(45deg);
+   }
+   ```
+
+* 如果使用第一种,元素会把整个舞台作为透视元素,<span style="color:red">也就是我们看到的每一个子元素共用同一个</span>因此每一个子元素的视觉形状都不一样,这个效果比较符合显示世界的3D效果
+* 如果使用第二种写法,那么每个元素都有自己的透视点,并且旋转角度一样,每个元素看上去也一样
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/jack-zhang-1314/embed/KKZwmRW?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/KKZwmRW">
+  Untitled</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### translateZ()
+
+> `translateZ()`函数可以理解透视的位置,`translateZ()`可以控制元素在视觉上的远近距离
+
+* 现在假设**容器**设置的透视为201px
+
+```css
+.container{
+    perspective:201px;
+}
+```
+
+* **子元素的设置**会出现以下几种情况:
+
+  1. 子元素设置`translateZ()`函数值越小,则子元素的视觉大小也越小
+  2. 子元素设置`translateZ()`函数值越大,则子元素的视觉大小也越大
+  3. 当子元素设置的`translateZ()`函数值非常接近201px时,但是不超过201px(如200px)的时候,该元素就会撑满整个屏幕
+  4. 当子元素设置`translateZ()`函数值超过201px,就看不见该元素.因为该元素会移到透视点后面
+
+  ![translateX](./img/translateX.png)
+
+### perspective-origin()
+
+> `perspective-origin:<position>`表示的时眼睛相对3D变换元素的位置
+
+![perspective-origin](./img/perspective-origin.png)
+
+* `perspective-origin`的初始值为50% 50%,表示默认的透视点是舞台元素或者元素的中心
+
+### transform-style
+
+> `transform-style`支持两个属性:`preserve-3d`和`flat`.控制子元素是否开启三维立体环境
+
+* `transform-style:flat;`(默认值)子元素不开启sd立体空间.**渲染表现类似于二向箔**.把三维空间的元素压缩在二维空间
+
+* ```transform-style:preserve-3d;```子元素开启sd立体空间
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/jack-zhang-1314/embed/JjMoJjz?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/JjMoJjz">
+  Untitled</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+### backface-visibility
+
+> css世界中一个元素 背面会表现为其正唛你图像的镜像.因此,当我们使用翻转效果的是背面转向用户面前的时候,显示的是该元素的正面的图像镜像
+
+* 如果实现扑克的翻转的3D效果.背面依然会和正面相同.所以这时候就需要隐藏背面
+* `backface-visibility`支持以下两个属性
+  1. `visible`(默认值),元素翻转式背面是可见的
+  2. `hidden`元素翻转背面是不可见的
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="Untitled" src="https://codepen.io/jack-zhang-1314/embed/NWXPgEM?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/NWXPgEM">
+  Untitled</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+* 设置`backface-visibility:hidden`之后,绕y轴旋转225°后元素被隐藏了.由于`rotateY`在值大于180°,小于360°的时候,我们看到的就是元素的背面了
+* `backface-visibility:visible`之后元素即使绕y轴旋转225°后还是清晰可见
