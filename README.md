@@ -28,8 +28,8 @@
 
 ### [字体](css样式/字体/css字体.md)
 
-## [关于SCSS](scss/1、相关介绍.md)
+## [关于SCSS](scss/1.相关介绍.md)
 
-* [scss的环境配置](scss/2、环境配置.md)
+* [scss的环境配置](scss/2.环境配置.md)
 
-* [scss语法](scss/3、scss语法.md)
+* [scss语法](scss/3.scss语法.md)
