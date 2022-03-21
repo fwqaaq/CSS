@@ -2,10 +2,11 @@
 
 >不做太多的拓展,非常基础需要掌握的问题
 
+* [css属性值语法](css基础/css属性值语法.md)
+* [css变量&关键词](css基础/css变量&全局关键字.md)
 * [css定位](css基础/定位.md)
 * [css选择器](css基础/css选择器.md)
-* [css变量&关键词](css基础/css变量&全局关键字.md)
-* [css属性值语法](css基础/css属性值语法.md)
+* [css逻辑属性](css基础/css逻辑属性.md)
 
 ## css动画
 

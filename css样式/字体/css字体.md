@@ -51,11 +51,11 @@
 
 > word-break和word-wrap
 
-1. **word-break**
+1. **word-break**:**用来标明怎么样进行单词内的断句**
    * `normal`:默认换行规则
    * `break-all`:任意非cjk文本间的单词换行
    * `keep-all`:不允许cjk文本中的单词换行,只能在半角空格或者连字符处换行.实际上和normal一致
-2. **word-wrap**
+2. **word-wrap**:**是否允许浏览器在单词内进行断句**,防止当一个字符串太长而找不到它的自然断句点时产生溢出现象
    * `normal`:默认换行规则
    * `break-word`:一行单词中实在没有其它靠谱的换行点时候换行
 
