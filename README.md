@@ -14,7 +14,10 @@
 * [css过渡](css动画/CSS过渡.md)
 * [css动画效果](css动画/CSS动画.md)
 
-## [css布局问题](css布局/css布局.md)
+## css布局
+
+* [传统布局](css布局/css布局.md)
+* [分栏布局](css布局/分栏布局.md)
 
 ## css样式
 
