@@ -19,6 +19,7 @@
 
 * [传统布局](css布局/css布局.md)
 * [分栏布局](css布局/分栏布局.md)
+* [flex布局](css布局/flex.md)
 
 ## css样式
 
