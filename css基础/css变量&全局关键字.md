@@ -70,6 +70,57 @@ box.style.width = 300px
 getComputedStyle(box).width
 ```
 
+## env()
+
+>env()函数类似于var()函数一样,将用户代理定义的环境变量插入设定的css中.并且此环境变量由用户的代理定义(用户屏幕上的可用空间),并且定义在全局作用域中(像var()一样)
+
+* 必须在媒体查询中设定:`viewport-fit=cover`
+
+```html
+<meta name="viewport" content="width=device-width,viewport-fit=cover">
+```
+
+* `safe-area-inset-left`:安全区域距离左边边界距离
+* `safe-area-inset-right`:安全区域距离右边边界距离
+* `safe-area-inset-top`:安全区域距离顶部边界距离
+* `safe-area-inset-bottom`:安全区域距离底部边界距离
+
+> 这四个定义了视口边缘内矩形`top,right,bottom,left`距离非矩形边界的距离(**默认值**).
+
+1. 如果是矩形笔记本电脑或者显示器,其默认值就是0
+2. 如果是非矩形发显示器(圆形表盘,iphone屏幕等).那么默认值就是边界到可视内容的距离
+3. 注意:<span style="color:red">属性对大小写敏感.需要大写:SAFE-AREA-INSET-LEFT</span>
+
+* 语法定义:`env( <custom-ident> , <declaration-value>? )`
+
+1. 第一种使用,直接使用用户设备自定义的默认值
+
+   ```css
+   env(safe-area-inset-top);
+   env(safe-area-inset-right);
+   env(safe-area-inset-bottom);
+   env(safe-area-inset-left);
+   ```
+
+2. 使用自定义的备用值
+   * 如果环境变量不可用,就可以设置备用值来解决这种问题
+
+   ```css
+   env(safe-area-inset-top, 20px);
+   env(safe-area-inset-right, 1em);
+   env(safe-area-inset-bottom, 0.5vh);
+   env(safe-area-inset-left, 1.4rem);
+   ```
+
+>由于设定了环境变量,我们可以在任意一个地方使用他
+
+```css
+body{
+  /* 将元素底部增加安全区的大小,防止遮罩 */
+  padding-bottom: env(Safe-area-inset-bottom);
+}
+```
+
 ## 全局关键字
 
 >css中`inherit`,`initial`,`unset`,`revert`是全局关键字属性,也就是css可以使用这几个关键字作为属性值
@@ -199,7 +250,9 @@ CSS.supports("display:flex")
 CSS.supports("display","flex")
 ```
 
-## calc()
+## 与calc()相关的函数
+
+### calc()
 
 >calc()支持加减乘除四种运算,任何可以使用<length>,<frequency>,<angle>,<item>,<percentage>,<number>或者<integer>数据类型的地方可以使用calc()函数
 
@@ -223,7 +276,7 @@ CSS.supports("display","flex")
 }
 ```
 
-## min(),max()和clamp()函数
+### min(),max()和clamp()函数
 
 >和calc()类似,任何可以使用<length>,<frequency>,<angle>,<item>,<percentage>,<number>或者<integer>数据类型的地方可以使用这三个函数
 
