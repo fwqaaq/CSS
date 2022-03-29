@@ -29,8 +29,8 @@
 
 1. `text-indent`仅对第一行内联盒子有效
 2. 非替换元素的display值设为inline的内联元素,设置`text-indent`值无效
-3. <input>标签阿牛设置`text-indent`无效,如果是输入框,和<textarea>一样有效
-4. <button>设置按钮text-indent有效
+3. \<input>标签阿牛设置`text-indent`无效,如果是输入框,和\<textarea>一样有效
+4. \<button>设置按钮text-indent有效
 
 > **字符间距**:`letter-spacing`
 
