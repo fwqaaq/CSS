@@ -48,7 +48,7 @@ summary: css语法以及css3的相关内容,媒体查询,动画和盒子模型�
 
 2. 格式化宽度
    * 格式化宽度仅出现在"绝对定位模型"中,也就是出现在position属性值为absolute和fixed的元素中,在预设情况下绝对定位元素的宽度表现是"包裹性","宽度由内部尺寸决定",但是有一中情况下由外部尺寸决定.
-   * 在 CSS 中,可替换元素（replaced element）的展现效果不是由 CSS 来控制的.这些元素是一种外部对象,它们外观的渲染,是独立于 CSS 的. 典型的可替换元素有：<iframe><video><embed><img>
+   * 在 CSS 中,可替换元素（replaced element）的展现效果不是由 CSS 来控制的.这些元素是一种外部对象,它们外观的渲染,是独立于 CSS 的. 典型的可替换元素有：\<iframe>\<video>\<embed>\<img>
    * 对于非替换元素,当 left/right 或 top/bottom 对立方位的属性值同时存在的时候,元素的宽度表现为"格式化宽度",其宽度大小相对于最近的具有定位特性 (position属性值不是static) 的祖先元素计算
 
    ```html
@@ -192,7 +192,7 @@ div {
 }
 ```
 
->要明白其中的原因要先了解浏览器渲染的基本原理. 首先,先下载文档内容,加载头部样式资源（如果有的话）,然后按照从上而下、自外而内的顺序渲染DOM内容. 套用本例就是,先渲染父级元素,后渲染子元素,是有先后顺序的.因此,当渲染到父元素的时候,子元素的width:100%并没有渲染,宽度就是图片加文字内容的宽度；等渲染到文字这个元素的时候,父元素的宽度已经固定,此时的width:100%就是已经固定好的父元素的宽度. 宽度不够怎么办？溢出就好了,overflow属性就是为此而生的
+>要明白其中的原因要先了解浏览器渲染的基本原理. 首先,先下载文档内容,加载头部样式资源(如果有的话),然后按照从上而下、自外而内的顺序渲染DOM内容. 套用本例就是,先渲染父级元素,后渲染子元素,是有先后顺序的.因此,当渲染到父元素的时候,子元素的width:100%并没有渲染,宽度就是图片加文字内容的宽度;等渲染到文字这个元素的时候,父元素的宽度已经固定,此时的width:100%就是已经固定好的父元素的宽度. 宽度不够怎么办？溢出就好了,overflow属性就是为此而生的
 
 * 由于没有显示定义height,就将height解释成字符串`auto`=>`'auto' * 100/100 = NaN`
 
@@ -246,48 +246,6 @@ html, body {
 4. 生成带有类名的或者id名的,直接写.demo或者#two, tab键
 5. 如果生成div类名是有顺序的,可以用自增符号,例:```.demo$*5```
 6. 如果在生成的标签内部些内容,可以用{}表示,```div{你好}```,tab键
-
-### 背景
-
-1. 背景颜色:```background-color:red;```,默认是<span style="color:red">transparent</span>
-2. 背景图片:```background-image:url();```,默认是none
-3. 背景平铺:```background-repeat:repeat;```,默认情况下是repeat
-
-   | 属性:      | 值       |
-   | ---------- | -------- |
-   | repeat:    | 平铺     |
-   | no-repeat: | 不平铺   |
-   | repeat-y:  | 纵向平铺 |
-   | repeat-x:  | 横向平铺 |
-
-   * 注意:页面元素可以添加背景颜色也可以添加背景图片  只不过背景图片会压住背景颜色
-
-4. 背景位置:```background-position:x y;```,可以使用<span style="color:red">方位名词</span>或者<span style="color:red">精确单位</span>
-   * 参数是方位名词:```background-position:center top;```
-     * 其中方位名词,和顺序无关
-     * 如果只指定了一个方位名词,另一个省略,则第二个默认居中对齐```background-position:top;```
-   * 参数是精确单位:```background-position:20px 50px;```
-     * 其中x一定是第一个,第二个一定是y
-     * 如果只指定一个数值,那么该数值一定会是x坐标,另一个默认垂直居中```background-position:50px;```
-   * 参数是混合单位:```background-position:20px top;```
-     * 如果指定的两个值是精确单位和方位名词混合使用,则第一个值是x坐标,第二个值是y坐标
-5. 背景图像固定(背景附着):```background-attachment:scroll;```,背景图像是否固定或者随着页面的其余部分滚动,<span style="color:red">默认:滚动</span>
-
-   | 参数   | 作用                       |
-   | ------ | -------------------------- |
-   | scroll | 背景图像是随着对象内容滚动 |
-   | fixed  | 背景图像固定               |
-
-6. 背景复合写法```background:背景颜色 背景图片地址 背景平铺 背景图像滚动 背景图片位置```,<span style="color:red">无顺序要求</span>
-7. 背景图片半透明效果:```background:rgba(0,0,0,0.3)```,第四个参数(alpha透明度)取值范围在0~1之间
-
-| 属性                  | 作用     | 值                                         |
-| --------------------- | -------- | ------------------------------------------ |
-| background-color      | 背景颜色 | 预定义/十六进制/RGB                        |
-| background-img        | 背景图片 | url(路径)                                  |
-| background-repeat     | 是否平铺 | repeat/no-repeat/repeat-y/repeat-x         |
-| background-position   | 背景位置 | length/position                            | x和y值 |
-| background-attachment | 背景附着 | scroll(背景图像滚动) /fixed (背景图像固定) |
 
 ## css特性
 
@@ -700,113 +658,6 @@ html, body {
 
 * 假设元素后面有一个和父元素`font-size`,`font-family`一模一样的文字内容,则`vertical-align:text-top`表示元素和这个文字的内容区域的上边缘对齐
 
-## 浮动(float)
-
-### 浮动特性
-
-> float属性用于创建浮动框,将其移动到一边,直到左边或右边缘及包含块或另一个浮动框的边缘```选择器{float:属性值;}```
-
-| 属性值 | 描述               |
-| ------ | ------------------ |
-| none   | 元素不浮动(默认值) |
-| left   | 元素向左浮动       |
-| right  | 元素向右浮动       |
-
-* 浮动特性:
-  1. <span style="color:red">浮动元素会脱离标准流</span>
-      * 浮动的盒子<span style="color:red">不再保留原先的位置</span>
-  2. 浮动的元素会一行内显示并且元素顶部对齐
-      * 如果多个盒子设置了浮动,则他们会按照属性值--行内显示并且顶端对齐排列
-      * <span style="color:red">注意:浮动的元素是相互考在一起的(不会右缝隙),如果父级宽度装不下这些浮动的盒子,多出的盒子会另起一行对齐</span>
-  3. 浮动的元素会具有行内块元素的特性
-      * 如果块级盒子没有设置宽度,默认宽度和父级一样宽,但是添加浮动后,他的大小根据内容来决定
-* 浮动元素经常和标准流父元素搭配使用:用标准流的父元素排列上下位置,之后内部子元素采取浮动排列左右位置,符合网页布局的第一准则
-* <span style="color:red">浮动的盒子只会影响盒子后面的标准流,不会影响前面的标准流</span>
-
-### 清除浮动
-
->* 父级盒子很多情况下,不方便给高度,但是子盒子浮动又不占有位置,最后父级盒子高度为0时,就会影响下面的白标准流盒子
->* 由于浮动的元素不再占有原文档的位置,所以他会对后面的元素排版产生影响
-
-1. 清楚浮动的本质:清楚浮动造成的影响
-2. 如果父盒子本身有高度,则不需要清楚浮动
-3. <span style="color:red">清楚浮动之后,父级就会根据浮动的子盒子自动检测高度.父级有了高度,就不会影响下面的标准流</span>
-
-* ```clear:属性值;```
-
-| 属性值 | 描述                                     |
-| ------ | ---------------------------------------- |
-| left   | 不允许左侧有浮动元素(清楚左侧浮动的影响) |
-| right  | 不允许右侧有浮动元素(清楚右侧浮动的影响) |
-| both   | 同时清楚左右两侧浮动的影响(通常用)       |
-
-* 清楚浮动的方法
-   1. 额外标签法(隔墙法):<span style="color:red">缺点:结构化比较差</span>
-
-       ```html
-       <style>
-         .clear{
-           clear:both;
-         }
-       </style>
-       ...
-      <div>
-       <div style="float:right">你好</div>
-       <div style="float:right">不错</div>
-       <div class="clear"></div><!-- 且新增的盒子必须是块级元素,不能是行内元素 -->
-      </div> 
-      ```
-
-   2. 父级添加overflow属性<span style="color:red">缺点:无法显示溢出部分</span>
-
-      ```html
-      <div style="overflow:hidden">
-       <div style="float:right">你好</div>
-       <div style="float:right">不错</div>
-       <div style="float:right">真的</div>
-      </div> 
-      ```
-
-   3. 父级添加after伪元素<span style="color:red">优点:没有增加标签,结构简单</span>
-
-      ```html
-      <style>
-         .clearfix:after{
-           content:"";
-           clear:both;
-           height:0;
-           visibility:hidden;
-         }
-       </style>
-      ...
-      <div class="clearfix">
-        <div style="float:right">你好</div>
-        <div style="float:right">不错</div>
-        <div style="float:right">真的</div>
-      </div> 
-      ```
-
-   4. 父级添加双伪元素<span style="color:red">代码更简洁</span>
-
-    ```html
-    <style>
-      .clearfix:before,
-       .clearfix:after{
-         content:"";
-         display:table;
-       }
-       .clearfix:after{
-         clear:both;
-       }
-     </style>
-    ...
-     <div class="clearfix">
-      <div style="float:right">你好</div>
-      <div style="float:right">不错</div>
-      <div style="float:right">真的</div>
-    </div> 
-    ```
-
 ## 显示与隐藏
 
 1. 如果希望元素不可见,同时不占据空间,辅助设备无法访问,但资源油价在,DOM可以访问
@@ -875,8 +726,6 @@ html{
 > overflow与滚动条
 
 * html中只有两个标签产生滚动条,<html>和<textarea>,因为他们的属性值默认是auto
-
-
 
 ## CSS技巧
 
