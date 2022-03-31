@@ -148,7 +148,7 @@ grid-template-rows: 25% 100px auto 60px;
 ```
 
 * 按照比例划分:各容器之比都是1:1:1
-* ![fr的和大于1](img/fr的和大于1.png)
+* ![fr的和大于1](./img/fr的和大于1.png)
 
 ```css
 .container{
@@ -157,7 +157,7 @@ grid-template-rows: 25% 100px auto 60px;
 ```
 
 * fr的总和<1,按照容器尺寸和fr值的计算值的乘积划分(产生40%的空间没有网格元素)
-* ![fr的和小于1](img/fr的和小于1.png)
+* ![fr的和小于1](./img/fr的和小于1.png)
 
 >部分列是固定的长度
 
@@ -181,7 +181,7 @@ grid-template-rows: 25% 100px auto 60px;
 }
 ```
 
-* ![ ](img/fr使用auto且大于1.png)
+* ![ ](./img/fr使用auto且大于1.png)
 * fr值可自动分配尺寸:容器减去设置auto关键字的`fit-content`的尺寸.
   * 由于这里设置auto关键字这一列的内容较少,fit-content就是这几个字符的宽度尺寸
   * 所以最后三列的宽度就是总宽度减去`宽auto`这几个字符平分的尺寸
@@ -194,7 +194,7 @@ grid-template-rows: 25% 100px auto 60px;
    }
    ```
   
-  * ![ ](img/fr使用auto且小于1.png)
+  * ![ ](./img/fr使用auto且小于1.png)
   * fr的值可自动分配的空间是容器尺寸-`宽度auto`得到的尺寸.
   * 后面的3个设置`.25fr`网格的宽度为可自动分配尺寸乘以0.25
   * 剩余的宽度就是第一个网格宽度
@@ -278,7 +278,7 @@ repeat(4, 10px [col-start] 30% [col-middle] auto [col-end])
 
 * grid容器可以放下6个100px宽的grid子项,则此时auto-fill关键字值等同于6.
 * 不过由于这里的grid子项的元素\<item>只有5个,因此会产生一个空白子项
-* ![真实的渲染效果](img/auto-fill.png)
+* ![真实的渲染效果](./img/auto-fill.png)
 
 * 如果grid子项是375px,最多可以放3个100px宽的grid子项,则此时的auto-fill关键字等同于3.
   * 此时的布局效果就是剩下的元素会换行显示
@@ -304,7 +304,7 @@ repeat(4, 10px [col-start] 30% [col-middle] auto [col-end])
 }
 ```
 
-* ![ ](img/auto-fit.png)
+* ![ ](./img/auto-fit.png)
 * auto-fit如果配合fr一起使用,可以保证无论grid容器宽度多大,<span style="color:red">grid子项都可以填满容器</span>.`repeat(auto-fit, minmax(100px, 1fr))`
   * 如果在同样的情况下使用`auto-fill`关键字,则出现一片空白区域
 
@@ -340,7 +340,7 @@ container {
 
 * `none`表示没有定义单元格
 
-![ ](img/area.png)
+![ ](./img/area.png)
 
 * 对应的css代码
 
@@ -459,7 +459,7 @@ container {
 </div>
 ```
 
-* ![ ](img/grid-auto-columns.png)
+* ![ ](./img/grid-auto-columns.png)
 * `.item-b`的grid-template属性的范围是第三网格线到第四网格线之间.由于超过grid-template的2列网格范围.因此.`.item-b`是隐式的网格
 
 * 属性值语法
@@ -501,7 +501,7 @@ container {
 }
 ```
 
-* ![ ](img/dense.png)
+* ![ ](./img/dense.png)
 * 如果使用`grid-auto-flow:dense;`.原本的第一个格子空缺会被第二个格子填补.网格会再次紧密
 
 ### grid
@@ -653,7 +653,7 @@ container {
 
 >在绝大多数场景下normal的表现和stretch的表现是一模一样的.
 
-* 如果grid子项具有内在的尺寸或者具有内在比例的元素,则此时normal的表现类似于start属性值的表现(例如\<img>具有内在的尺寸和比例会表现为`start`)
+* 如果grid子项具有内在的尺寸或者具有内在比例的元素,则此时normal的表现类似于start属性值的表现(例如\<./img>具有内在的尺寸和比例会表现为`start`)
 
 #### place-items
 
@@ -965,7 +965,7 @@ grid-area: <area-name> | <row-start> / <column-start> / <row-end> / <column-end>
   ```
 
   * 此时浏览器会把网格A四周的网格线自动命名为`A-start`或者`A-end`
-  * ![ ](img/grid-area.png)
+  * ![ ](./img/grid-area.png)
   * 因此当我们设置`grid-area:A`.实际上是指`grid-area:A-start/A-start/A-end/A-end;`
   * grid-area属性支持1~4个网格线名称,不同数量对应的含义如下
 
