@@ -266,7 +266,7 @@ repeat(4, 10px [col-start] 30% [col-middle] auto [col-end])
 ```
 
 * 如果无法确定网格布局的列数,而且希望网格布局的列数随着容器宽度变化,这个时候不能设置重复次数为固定的整数值
-  * 使用`auto-fill`或者`auto-fill`
+  * 使用`auto-fill`或者`auto-fit`
 
 > auto-fill关键字
 
@@ -680,7 +680,7 @@ align-content: normal | stretch | start | end | center | space-between | space-a
 * `start`:css逻辑属性,与文档流方向有段.水平方向默认左对齐,垂直方向默认上对齐
 * `end`:css逻辑属性,与文档流方向有段.水平方向默认右对齐,垂直方向默认下对齐
 * `center`:水平居中或者垂直居中
-* `spacebetween`:grid子项两端对齐,中间空余空间等分
+* `space-between`:grid子项两端对齐,中间空余空间等分
 * `space-around`:每个grid子项的上下或左右两侧都环绕互不干扰的相同尺寸的空白间距,在视觉上表现为grid子项边缘处的空白尺寸只有中间空白尺寸的一半
 * `space-evenly`:每个grid子项上下或者左右的空白间距完全相等
 
