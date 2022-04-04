@@ -8,19 +8,26 @@
   <title>Document</title>
   <style>
     .shape {
-      display: inline-block;
+      float: left;
       height: 50px;
       width: 50px;
       background-color: red;
-      margin: 50px 0 0 50px;
+      margin: 10px;
+      padding: 10px;
+      border: 10px solid rgb(242, 7, 7);
       border-radius: 50%;
-      box-shadow: 0 0 0 10px white, 0 0 0 20px red;
+      background-clip: content-box;
+      shape-outside: padding-box;
     }
   </style>
 </head>
 
 <body>
-  <span class="shape"></span>
+  <div style="width: 200px;">
+    <span class="shape">
+    </span>
+    <p>啊对对对对对对对对对对对对对对对对对</p>
+  </div>
 </body>
 
 </html>

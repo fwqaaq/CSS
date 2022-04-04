@@ -49,5 +49,23 @@
     <item class="item5">e</item>
   </div>
 </body>
+<script>
+  const obj1 = {}
+  const obj2 = { name: "zhangsan" }
+  const child = new Proxy(obj1, {
+    get(target, key, reserive) {
+      console.log("----------")
+      console.log(target, key, reserive)
+    }
+  })
+  const parent = new Proxy(obj2, {
+    get(target, key, reserive) {
+      console.log(target, key, reserive)
+    }
+  })
+  Object.setPrototypeOf(child, parent)
+
+  console.log(child.raw)
+</script>
 
 </html>

@@ -21,6 +21,7 @@
 * [分栏布局](css布局/分栏布局.md)
 * [flex布局](css布局/flex.md)
 * [grid布局](css布局/grid.md)
+* [shape布局](css布局/shapes.md)
 
 ## css样式
 
