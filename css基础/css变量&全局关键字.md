@@ -13,7 +13,7 @@ summary: css自定义变量
 > 使用css自定义属性,是由css作者自定义的,他包含的值可以在整个`document`中重复使用
 
 1. 使用自定义属性在某个地方存储一个值,然后在其他许多地方引用它
-2. 更好的语义化标识
+2. 更好的语义化标识.并且使css语法的扩展成为可能,例如`attr()`是一个具有颠覆性的函数
 3. 自定义属性受级联的约束,并从其父级继承其值(<span style="color:red">自定义属性必须要定义在父级以上,才可以在子级中使用</span>)
 
 ### 基础语法
@@ -43,7 +43,7 @@ body {
 }
 ```
 
-* 如果`--my-var`没有定义的化,可以直接使用`red`作为备用值
+* 如果`--my-var`没有定义,可以直接使用`red`作为备用值
 
 > 使用`fallback`,然而这可能导致性能问题(尽量避免)
 
@@ -52,6 +52,87 @@ body {
   background-color: var(--my-var, var(--my-background, pink)); 
 }
 ```
+
+### var()非法值
+
+```css
+body{
+  --color:20px;
+  background-color: pink;
+  background-color: var(--color,blue);
+}
+```
+
+* 由于属性不合法.这时候背景色会被解析为当前css的**初始值或者继承值(如果有继承性)**,也就是按照`unset`关键字的规则渲染
+* 由于上述的20px是非法值,这时候初始值就会被`transparent`代替
+
+### 继承的特性
+
+>css自定义属性本质上就是只能由元素或者后代元素使用的特性,本质上就是继承的特性
+
+* 利用`var()`可以直接控制[`Shadow DOM`](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components/Using_shadow_DOM)样式的入口
+
+```js
+var shadow = button.attachShadow({ mode: 'closed' }); 
+// Shadow DOM中的样式和按钮 
+shadow.innerHTML = `<style> 
+button { padding: 9px 1em; 
+border: var(--ui-button-border, 1px solid #ccc); 
+border-radius: var(--ui-button-radius, 4px); 
+background-color: var(--ui-button-background, #fff); 
+color: var(--ui-button-color, #333);
+} </style>
+<button>${button.textContent}</button>`;
+```
+
+* 此时就可以i使用css自定义属性穿透`Shadow DOM`
+
+```html
+<ui-button type="primary">按钮</ui-button>
+<style>
+  [type="parmary"] { 
+    --ui-button-border: 1px solid transparent; 
+    --ui-button-background: deepskyblue; 
+    --ui-button-color: #fff;
+}
+</style>
+```
+
+### 自定义属性的细节
+
+1. 在定义css属性的时候可以直接引入css自定义属性,也可以用在`calc()`函数中
+
+   ```css
+   body { 
+     --green: #4CAF50; 
+     --successColor: var(--green);
+     --columns:4;
+     --margins: calc(24px / var(--columns));
+   }
+   ```
+
+2. 不能基于自身再次赋值.由于`.some-class`中的color计算值初始值,表现为上下文的颜色
+
+   ```css
+   :root { 
+     --primary-color: deepskyblue;
+   } 
+   .some-class { 
+     --primary-color: var(--primary-color, #2a80eb);
+      /* --primary-color会被认为是非法的，color的颜色为当前上下文的颜色 */ 
+     color: var(--primary-color);
+   }
+   ```
+
+3. 不能使用于媒体查询.但是`env()`可以适用于媒体查询
+
+   ```css
+   :root { 
+     --maxWidth: 640px;
+   } 
+   /* 不合法，语法无效 */
+   @media (max-width: var(--maxWidth)) {}
+   ```
 
 ### 使用JavaScript
 
@@ -74,7 +155,8 @@ getComputedStyle(box).width
 
 >env()函数类似于var()函数一样,将用户代理定义的环境变量插入设定的css中.并且此环境变量由用户的代理定义(用户屏幕上的可用空间),并且定义在全局作用域中(像var()一样)
 
-* 必须在媒体查询中设定:`viewport-fit=cover`
+* env()函数可以让网页内容显示在安全区
+* 必须在meta中设定:`viewport-fit=cover`
 
 ```html
 <meta name="viewport" content="width=device-width,viewport-fit=cover">
@@ -89,7 +171,13 @@ getComputedStyle(box).width
 
 1. 如果是矩形笔记本电脑或者显示器,其默认值就是0
 2. 如果是非矩形发显示器(圆形表盘,iphone屏幕等).那么默认值就是边界到可视内容的距离
-3. 注意:<span style="color:red">属性对大小写敏感.需要大写:SAFE-AREA-INSET-LEFT</span>
+3. 注意:属性对大小写敏感.
+   * <span style="color:red">如果大写:SAFE-AREA-INSET-LEFT</span>,则无法识别
+
+   ```css
+   /*一定会是50px*/
+   env(SAFE-AREA-INSET-LEFT,50px);
+   ```
 
 * 语法定义:`env( <custom-ident> , <declaration-value>? )`
 
@@ -117,7 +205,7 @@ getComputedStyle(box).width
 ```css
 body{
   /* 将元素底部增加安全区的大小,防止遮罩 */
-  padding-bottom: env(Safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 ```
 
