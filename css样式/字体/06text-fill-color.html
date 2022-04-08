@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button {
+      /* 重置按钮元素的色值 */
+      color: inherit;
+      /* 当前元素的color值 */
+      background-color: currentColor;
+      -webkit-text-fill-color: #fff;
+    }
+
+    .module {
+      border: 1px solid;
+    }
+
+    .module h4 {
+      -webkit-text-fill-color: #fff;
+      background-color: currentColor;
+    }
+
+    .module button {
+      border: 0;
+      -webkit-text-fill-color: #fff;
+      color: inherit;
+      background-color: currentColor;
+    }
+
+    .module ul {
+      color: #333;
+    }
+
+    [data-theme="a"] {
+      color: deepskyblue;
+    }
+
+    [data-theme="b"] {
+      color: rgb(255, 217, 0);
+    }
+  </style>
+</head>
+
+<body>
+  <section class="module" data-theme="a">
+    <h4>模块标题</h4>
+    <content>
+      <ul>
+        <li>文字描述</li>
+        <li>文字描述</li>
+        <li>文字描述</li>
+      </ul>
+      <button>了解更多</button>
+    </content>
+  </section>
+</body>
+
+</html>
