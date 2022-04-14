@@ -1,0 +1,42 @@
+# @format
+
+name: page
+
+on:
+  push:
+    branches: [dev]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: clone git
+        uses: actions/checkout@v2
+
+      - name: install nodejs
+        uses: actions/setup-node@v3.0.0
+        with:
+          node-version: "16.x"
+
+      - name: install
+        run: |
+          npm install pnpm -g
+          pnpm install
+          pnpm run docs:build
+          cp -r ./docs/.vuepress/dist ./
+          rm -rf docs
+          mv dist docs
+      - name: usegit
+        run: |
+          git init
+          git config --local user.email "zyj17715640603@gmail.com"
+          git config --local user.name "Jack-Zhang-1314"
+          git remote set-url origin https://Jack-Zhang-1314:${{secrets.ACTION_ACCESS}}@github.com/Jack-Zhang-1314/CSS
+          git checkout -b page
+          git add .
+          git commit -m "build docs"
+          git push -f origin page

@@ -1,6 +1,7 @@
 module.exports = {
   title: 'css',
   description: 'css学习',
+  base: "/CSS/",
   locales: {
     '/': {
       lang: 'zh-CN',
