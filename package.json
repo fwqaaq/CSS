@@ -4,6 +4,8 @@
   "description": ">不做太多的拓展,非常基础需要掌握的问题",
   "main": "index.js",
   "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "keywords": [],
@@ -14,7 +16,9 @@
     "@commitlint/config-conventional": "^16.2.1",
     "conventional-changelog": "^3.1.25",
     "cz-conventional-changelog": "^3.3.0",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "vuepress": "^1.9.7",
+    "vuepress-theme-reco": "^1.6.11"
   },
   "config": {
     "commitizen": {

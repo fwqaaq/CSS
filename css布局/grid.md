@@ -86,7 +86,7 @@ grid-template-rows: 25% 100px auto 60px;
   }
   ```
 
-#### <track-size>
+#### \<track-size>
 
 > `grid-template-columns`属性的默认值是none,可以使用`grid-auto-columns`设置网格尺寸
 
@@ -95,7 +95,7 @@ grid-template-rows: 25% 100px auto 60px;
   1. 长度值
   2. 百分比值
   3. 关键字属性.包括`min-content`,`max-content`以及`auto`
-  4. <flex>数据类型,以`fr`为单位
+  4. \<flex>数据类型,以`fr`为单位
   5. 函数值,包括:`repeat()`,`minmax()`和`fit-content()`
 * `min-content`:网格布局中的同一行grid子项的高度和同一列grid子项的宽度都是一致的
   * 所以min-content指的是一排或者一列格子中所有最小内容尺寸中的最大的那个最小内容尺寸值(不是某一个格子的最小尺寸)
@@ -148,7 +148,7 @@ grid-template-rows: 25% 100px auto 60px;
 ```
 
 * 按照比例划分:各容器之比都是1:1:1
-* ![fr的和大于1](./img/fr的和大于1.png)
+* ![fr的和大于1](./img/frAndmorethan1.png)
 
 ```css
 .container{
@@ -157,7 +157,7 @@ grid-template-rows: 25% 100px auto 60px;
 ```
 
 * fr的总和<1,按照容器尺寸和fr值的计算值的乘积划分(产生40%的空间没有网格元素)
-* ![fr的和小于1](./img/fr的和小于1.png)
+* ![fr的和小于1](./img/frAndlessthan1.png)
 
 >部分列是固定的长度
 
@@ -181,7 +181,7 @@ grid-template-rows: 25% 100px auto 60px;
 }
 ```
 
-* ![ ](./img/fr使用auto且大于1.png)
+* ![ ](./img/frUseAutomore1.png)
 * fr值可自动分配尺寸:容器减去设置auto关键字的`fit-content`的尺寸.
   * 由于这里设置auto关键字这一列的内容较少,fit-content就是这几个字符的宽度尺寸
   * 所以最后三列的宽度就是总宽度减去`宽auto`这几个字符平分的尺寸
@@ -194,7 +194,7 @@ grid-template-rows: 25% 100px auto 60px;
    }
    ```
   
-  * ![ ](./img/fr使用auto且小于1.png)
+  * ![ ](./img/frUseAutoless1.png)
   * fr的值可自动分配的空间是容器尺寸-`宽度auto`得到的尺寸.
   * 后面的3个设置`.25fr`网格的宽度为可自动分配尺寸乘以0.25
   * 剩余的宽度就是第一个网格宽度
@@ -250,13 +250,13 @@ grid-template-columns:fit-content(1fr);
 }
 ```
 
-* 正式语法:<tracklist>就是不包括repeat()函数在内的所有`grid-template-columns`支持的属性值,包括fr值和`min-content/max-content`,以及minmax()和fit-content()函数
+* 正式语法:\<tracklist>就是不包括repeat()函数在内的所有`grid-template-columns`支持的属性值,包括fr值和`min-content/max-content`,以及`minmax()`和`fit-content()`函数
 
 ```css
 repeat( [ <positive-integer> | auto-fill | auto-fit ] , <tracklist> )
 ```
 
-* <positive-integer>就是正整数的意思,表示尺寸重复的次数
+* \<positive-integer>就是正整数的意思,表示尺寸重复的次数
 
 ```css
 /* 合法的 */
@@ -326,7 +326,7 @@ container {
 }
 ```
 
-* <grid-area-name>表示对应网格区域的名称,命名规则和anImation-name属性一样
+* \<grid-area-name>表示对应网格区域的名称,命名规则和anImation-name属性一样
 
 * `.`表示空的网格单元格
 
@@ -399,7 +399,7 @@ container {
 
 1. 属性值none表示3个css属性值都是none
 
-2. <grid-template-rows> / <grid-template-columns>表示行尺寸或者是列尺寸的设置.支持函数的形式
+2. \<grid-template-rows> / \<grid-template-columns>表示行尺寸或者是列尺寸的设置.支持函数的形式
 
 3. 包含`grid-template-areas`的写法.\<string>是必须的,指的就是`grid-template-areas`的属性值(每一行的区域名称)
 
@@ -416,9 +416,9 @@ container {
      }
      ```
 
-   * 只有<string>类型是必须的,其他的.例如<track-size>都是可以省略的(会使用auto代替)
+   * 只有\<string>类型是必须的,其他的.例如\<track-size>都是可以省略的(会使用auto代替)
 
-   * 网格线的名称(也就是<line-name>数据类型)也是可以省略的.如果分开写,必须在同一个括号里
+   * 网格线的名称(也就是\<line-name>数据类型)也是可以省略的.如果分开写,必须在同一个括号里
 
      ```css
      .container { 
@@ -427,7 +427,7 @@ container {
      }
      ```
 
-   * 注意:<span style="color:red">包含<string>的grid-template缩写不支持repeat()函数</span>
+   * 注意:<span style="color:red">包含\<string>的grid-template缩写不支持repeat()函数</span>
 
 > 并且`grid-template`很多时候不会重置隐式的grid属性(如`grid-auto-columns`属性,`grid-auto-rows`,和`grid-auto-flow`).大多数时候使用`grid`缩写来代替grid-template
 
@@ -471,7 +471,7 @@ container {
 }
 ```
 
-* 默认值是auto,可以是长度值,百分比值以及fr值.也可以是`min-content`关键字和max-content关键字,也支持minmax()函数,和fit-content()函数.但是不支持`repeat()`函数
+* 默认值是auto,可以是长度值,百分比值以及fr值.也可以是`min-content`关键字和max-content关键字,也支持`minmax()`函数,和`fit-content()`函数.但是不支持`repeat()`函数
 
 ### grid-auto-flow
 
@@ -512,7 +512,7 @@ container {
 
 * 表示所有的属性都是初始值
 
->grid:<grid-template>
+>grid:\<grid-template>
 
 * 这个语法和grid-template一模一样
 
@@ -537,7 +537,7 @@ container {
 }
 ```
 
-* 例如这样写:会将auto-flow关键字解析为column.并且省略了dense.启用了<grid-auto-columns>
+* 例如这样写:会将auto-flow关键字解析为column.并且省略了dense.启用了\<grid-auto-columns>
 
 ```css
 .container{
@@ -653,7 +653,7 @@ container {
 
 >在绝大多数场景下normal的表现和stretch的表现是一模一样的.
 
-* 如果grid子项具有内在的尺寸或者具有内在比例的元素,则此时normal的表现类似于start属性值的表现(例如\<./img>具有内在的尺寸和比例会表现为`start`)
+* 如果grid子项具有内在的尺寸或者具有内在比例的元素,则此时normal的表现类似于start属性值的表现(例如\<img>具有内在的尺寸和比例会表现为`start`)
 
 #### place-items
 
@@ -703,7 +703,7 @@ align-content: normal | stretch | start | end | center | space-between | space-a
 }
 ```
 
-1. <integer>指定起止于第几条网格线,可以是负数.但是不能是0,<span style="color:red">负整数表示从右侧开始计数</span>
+1. \<integer>指定起止于第几条网格线,可以是负数.但是不能是0,<span style="color:red">负整数表示从右侧开始计数</span>
 
    ```css
    .container{
@@ -720,7 +720,7 @@ align-content: normal | stretch | start | end | center | space-between | space-a
 
    * 表示`.item`元素起始于从右边往左的第三条线(包括边缘线).终止于从左边缘往右数的第二条线(包括边缘线).
    * 这样grid子项就会占据2~4个显示网格
-2. <name>是自定义网格线的名称.<span style="color:red">这里名称会有一个自动补全-start后缀和-end后缀</span>的特性
+2. \<name>是自定义网格线的名称.<span style="color:red">这里名称会有一个自动补全-start后缀和-end后缀</span>的特性
 
    ```css
    .container{
@@ -741,8 +741,8 @@ align-content: normal | stretch | start | end | center | space-between | space-a
    }
    ```
 
-3. <integer> <name>这个语法是高阶应用
-   * 当前名称为<name>的第<inteder>个网格线.从定义上看需要多个网格线才能匹配
+3. \<integer> \<name>这个语法是高阶应用
+   * 当前名称为\<name>的第\<inteder>个网格线.从定义上看需要多个网格线才能匹配
    * 如果没有多的相同名称的网格线.那么浏览器会自动创建符合数量的隐式网格,这些隐式网格的网格线都是指定这个名称
 
    ```CSS
@@ -787,7 +787,7 @@ align-content: normal | stretch | start | end | center | space-between | space-a
 </div>
 ```
 
-* 每条网格线都内置了<integer>数值.从1开始计数,水平和垂直的都是4个网格线,含边缘
+* 每条网格线都内置了\<integer>数值.从1开始计数,水平和垂直的都是4个网格线,含边缘
 
 1. `grid-column-start: 2;`表示item网格从左侧的第二条开始
 2. `grid-column-end:col-three;`网格右侧结束于右侧名称为col-three的网格线
@@ -811,7 +811,7 @@ align-content: normal | stretch | start | end | center | space-between | space-a
 
 * 直接看`grid-row-start`,从名字为`row-one`的网格线开始.然后结束`grid-row-end:span 3;`:表示右3行网格进行合并
 
-1. `span \<number>`中的<number>不能是负值,也不能是0,也不能是小数
+1. `span \<number>`中的\<number>不能是负值,也不能是0,也不能是小数
    * 并且不建议`grid-column-start`和`grid-column-end`同时使用`span <number>`语法,因为完全没有必要,且grid-column-end设置的`span <number>`值不会产生任何效果
 
    ```css
