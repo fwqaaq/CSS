@@ -215,9 +215,9 @@ rotate3d(x,y,z,angle)
 * `rotateY(angle)`:绕Y轴旋转
 * `rotateZ(angle)`:绕Z轴旋转
 
-<iframe height="300" style="width: 100%;" scrolling="no" title="ROTATE" src="https://codepen.io/jack-zhang-1314/embed/oNpgZoe?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/oNpgZoe">
-  ROTATE</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
+<iframe height="300" style="width: 100%;" scrolling="no" title="preserve-3d" src="https://codepen.io/jack-zhang-1314/embed/JjMoJjz?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/JjMoJjz">
+  preserve-3d</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 
