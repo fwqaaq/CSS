@@ -82,17 +82,17 @@ transition:opacity 5s,transform 3s;
 
 * ease:等同于`cubic-bezier(0.25, 0.1, 0.25, 1.0)`,默认值,表示过渡的时候先加速再减速
   * 横坐标是时间,纵坐标是进程,曲线越陡速率越快,曲线越缓速率越慢
-  * ![ease](img/ease.png)
+  * ![ease](./img/ease.png)
 
 * `ease-in`:等同于`cubic-bezier(0.42, 0, 1.0, 1.0)`,表示过渡速度刚开始慢,然后过渡速度逐渐加快
-  * ![ease-in](img/ease-in.png)
+  * ![ease-in](./img/ease-in.png)
 
 * `ease-out`:等同于`cubic-bezier(0, 0, 0.58, 1.0)`,表 示过渡刚开始速度快,然后速度逐渐变慢
-  * ![ease-out](img/ease-out.png)
+  * ![ease-out](./img/ease-out.png)
   
 * `ease-in-out`:等同于`cubic-bezier(0.42, 0, 0.58, 1.0)`,表示过渡刚开始速度慢,然后速度逐渐加快,最后再变
 慢
-  * ![ease-in-out](img/ease-in-out.png)
+  * ![ease-in-out](./img/ease-in-out.png)
 
 >贝塞尔函数
 
@@ -105,13 +105,13 @@ cubic-bezier(x1, y1, x2, y2)
 ```
 
 * 例如ease关键字对应的贝塞尔曲线函数`cubic-bezier(0.25, 0.1, 0.25, 1.0)`的曲线图就是根据(0.25, 0.1)和(0.25, 1.0)这两个控制点坐标生成的
-![贝塞尔函数](img/BesselFn.png)
+![贝塞尔函数](./img/BesselFn.png)
 
 >贝塞尔曲线有二阶三阶四阶等:他的曲线就是第一个点跑到最后一个点的运动轨迹
 
 * 五阶贝塞尔函数
 
-![贝塞尔曲线](img/Besselcurve.gif)
+![贝塞尔曲线](./img/Besselcurve.gif)
 
 ### transition与visibility属性
 
