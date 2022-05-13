@@ -96,6 +96,14 @@ module.exports = {
           { title: "环境配置", path: "/scss/环境配置" },
           { title: "scss语法", path: "/scss/scss语法" },
         ]
+      },
+      {
+        title: 'css技巧',
+        path: '/css技巧/HTML内置行为和应用',
+        collapsable: true,
+        children: [
+          { title: "HTML内置行为和应用", path: "/css技巧/HTML内置行为和应用" },
+        ]
       }
     ]
   },
