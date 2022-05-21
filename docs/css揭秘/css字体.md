@@ -655,3 +655,34 @@ font-variant: font-variant-caps || font-variant-numeric || fontvariant-alternate
   * `auto`是默认值,表示浏览器自己决定是否要调整字距.例如当字号(`font-size`)属性值比较小的时候,如果进行字距调整就会显得很奇怪,因此,浏览器会禁止字距调整
   * `normal`表示应用字距调整
   * `none`表示不根据字体文件中的字距信息进行字距调整
+
+## 系统字体设置
+
+1. 默认全局字体
+
+   ```css
+   @font-face {
+     font-family: Emoji;
+     src: local("Apple Color Emojiji"), local("Segoe UI Emoji"), local("Segoe UI Symbol"), local("Noto Color Emoji");
+     unicode-range: U+1F000-1F644, U+203C-3299;
+   }
+   body {
+     font-family: system-ui, —apple-system, Segoe UI, Rototo, Emoji, Helvetica, Arial, sans-serif;
+   }
+   ```
+
+2. 衬线字体：
+
+   ```css
+   .font-serif {
+     font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+   }
+   ```
+
+3. 等宽字体：
+
+   ```js
+   .font-mono {
+       font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+   }
+   ```
