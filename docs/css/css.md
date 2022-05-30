@@ -592,9 +592,71 @@ html, body {
 * 注意:如果使用数值作为`line-height`的属性值,那么子元素则是继承`line-height`这个属性的数值.例如1.5,会和子元素的`font-size`展开计算得到行高;但是百分比值或者长度则是提前在父元素中利用`font-size`计算得出子元素的行高,然后子元素继承
 * 一般使用数值会有更好的排版效果
 
+> `line-height`对于单行纯文本元素配合height可以实现居中,但是遇到替换元素或者多行纯文本元素就不行
+
+* 替换元素的高度不受line-height影响,并且`vertical-align`属性会影响到替换元素
+
+>内联元素的大值特性
+
+```html
+<div class="parent">
+  <span class="child">绿色</span>
+</div>
+```
+
+```css
+.parent {
+  line-height: 20px;
+}
+.child {
+  line-height: 96px;
+}
+/* 或者这样设置 */
+.parent {
+  line-height: 96px;
+}
+.son {
+  line-height: 20px;
+}
+```
+
+* 其实无论内联元素的`line-height`如何设置,最终的父级元素都是由数值最大的那个`line-height`决定的.
+* 这里的\<span>是一个内联元素,因此自身是一个**内联盒子**,本例就这一个内联盒子,只要有一个**内联盒子**,就一定会有**行宽盒子**,就是每一行内联元素外面包裹一层看不见的盒子
+  * 并且这个**行宽盒子**前面有一个宽度为0的具有该元素的字体和行高属性都看不见的**幽灵空白节点**
+  * 实际上
+
+  ```html
+  <div class="parent">
+    字符<span class="child">绿色</span>
+  </div>
+  ```
+
+* 当`.parent`设置`line-height:96px`很容易理解.如果`.son`的line-height设置`96px`,<span style="background:red">行宽盒子的高度是由高度最高的**内联盒子**决定的</span>,所以`.parent`的高度永远是最大的那个`line-height`
+
 ### vertical-align
 
->vertical-align起作用的前提条件就是,只能应用于内联元素以及table值为table-ceil
+>vertical-align起作用的前提条件就是,只能应用于内联元素(inline,inline-block,inline-table)以及table值为table-ceil
+
+* 因此在默认情况下.可以使用于\<img>,\<button>,\<input>等替换元素,或者\<span>,\<strong>,\<em>等内联元素
+
+```html
+<style>
+  .box{
+    height:128px;
+    /* 关键css属性, */
+    line-height:128px;
+  }
+  .box>img{
+    height:96px;
+    vertical-align:middle;
+  }
+</style>
+<div class="box">
+  <img src="1.jpg">
+</div>
+```
+
+* 这种情况下`line-height`使`幽灵空白节点`的高度足够.才会使`vertical-align:middle`起作用
 
 1. 线类:`vertical-align:baseline(默认值) | top | middle | bottom;`
 
@@ -607,10 +669,15 @@ html, body {
 
 2. 文本类:`vertical-align:text-top | text-bottom`
 3. 上标下标:`vertical-align:sub | super`
+   * `super`:提高盒子的基线到父级合适的下标基线位置.对标\<sup>标签
+   * `sub`:降低盒子的基线到父级合适的下标基线位置.对标\<sub>标签
 4. 数值百分比:`vertical-align:20px | 2em |20%`
+   * 如果vertical-align的计算值是正值,往下偏移,如果是正值,往上偏移.
+   * 并且数值的大小相对于基线位置.例如`vertical-align:0`-->`vertical-align:basline`
 
-* 如果vertical-align的计算值是正值,往下偏移,如果是正值,往上偏移
 * `vertical-align`的百分比是相对于`line-height`计算的
+
+* <span style="color:red">当设置浮动或者绝对定位之后,该元素会被块状化,这时候再使用`vertical-align`不起作用</span>
 
 > 内联元素由于幽灵空白节点,line-height,vertical-align会产生很多bug(例如图片在块状盒子中会有间隙)
 
@@ -619,18 +686,41 @@ html, body {
 3. 容器`font-size`足够小.不过此方法想要生效,需要容器的`line-height`和`font-size`相关,例如数值或者百分比,否则只会让间隙更大
 4. 图片设置`vertical-align`属性,间隙产生的原因就是基线对齐问题,vertical-align设置为top,bottom等值
 
->文本制类的内联元素,vertical-align的baseline属性值就是字符x的下边缘
+#### 深入理解vertical-align线类属性值
 
-* 如果是`inline-block`,则规则要复杂,如果里面没有内联元素,或者overflow不是visible,则该元素的基线就是其margin底边缘;否则基线就是元素里面最后一行的内联元素的基线
+>* 文本制类的内联元素,`vertical-align`的`baseline`属性值就是字符x的下边缘.对于替换元素则是替换元素的下边缘
+>* 如果是`inline-block`,则规则要复杂,如果里面没有内联元素,或者overflow不是visible,则该元素的基线就是其margin底边缘;否则基线就是元素里面最后一行的内联元素的基线
 
- | 值             | 描述                               |
- | -------------- | ---------------------------------- |
- | vertical-align | 盒子的顶部和父级内容区域的顶部对齐 |
- | vertical-align | 盒子的底部和父级内容区域的底部对齐 |
+```html
+<style>
+  .dib{
+    display:inline-block;
+    width: 150px;height:150px;
+    border:1px solid #cad5eb;
+    background-color:#f0f3f9;
+  }
+</style>
+<span class="dib"></span>
+<span class="dib">x-baseline</span>
+```
+
+* 由于第一个框里没有内联元素,因此`baseline`就是容器margin的下边缘.而第二个边框有字符,是纯正的内联元素,因此第二个边框的`baseline`也就是这些字母的基线,也就是x的下边缘.
+
+>了解`vertical-align:top/tottom`
+
+* `vertical-align:top`:垂直上边缘对齐,如果是内联元素,则和这一行位置最高的内联元素的顶部对齐.bottom只是把顶部换成了底部
+
+> `vertical-align:middle`和近似垂直居中
+
+* **内联元素**:元素的垂直中心点和行宽盒子基线往上1/2`x-height`处对齐
+  * 所以它真正意义上的垂直中心是垂直中心位置和x的交叉点对齐
+  * ![ ](./img/middle.jpg)
+  * 红色的线是图片中心的线,绿色的容器垂直中心的线.而随着`font-size`的增大,图片的中心位置会继续向下偏移,通常可以设置`font-size:0`.这样两条线几乎就对齐了
 
 > 父级内容区域是指在父级元素当前`font-size`和`font-family`下应有的内容区域设置大小
 
 * 假设元素后面有一个和父元素`font-size`,`font-family`一模一样的文字内容,则`vertical-align:text-top`表示元素和这个文字的内容区域的上边缘对齐
+* ![ ](./img/text-top.jpg)
 
 ## 显示与隐藏
 

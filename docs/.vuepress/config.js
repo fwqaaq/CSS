@@ -103,6 +103,9 @@ module.exports = {
         collapsable: true,
         children: [
           { title: "HTML内置行为和应用", path: "/css技巧/HTML内置行为和应用" },
+          { title: "居中", path: "/css技巧/居中" },
+          { title: "用户行为", path: "/css技巧/用户行为" },
+          { title: "layer", path: "/css技巧/layer" },
         ]
       }
     ]
