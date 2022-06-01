@@ -407,7 +407,19 @@ cs-module:empty{
    * `input:not(:disabled):not(:read-only){}`
    * 匹配所有不处于禁用状态,也不处于只读状态的\<input>
 3. :not()伪类目前已支持多个表达式
-   * 错误:`input:not(pl,li)`
+
+   ```html
+   <style>
+     button:not(.a, .b) {
+       background-color: green;
+     }
+   </style>
+   <button>没有class</button>
+   <button class="a">class="a"</button>
+   <button class="b">class="a b"</button>
+   <button class="a b">class="a b"</button>
+   ```
+
 4. :not()可以优化重置css样式的策略
    * 并且他的代码更简洁,更易维护和理解
 
