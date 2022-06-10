@@ -106,6 +106,7 @@ module.exports = {
           { title: "居中", path: "/css技巧/居中" },
           { title: "用户行为", path: "/css技巧/用户行为" },
           { title: "layer", path: "/css技巧/layer" },
+          { title: "文字换行", path: "/css技巧/文字换行" }
         ]
       }
     ]
