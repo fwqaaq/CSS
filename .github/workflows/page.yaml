@@ -25,7 +25,7 @@ jobs:
           npm install pnpm -g
           pnpm install
           pnpm run docs:build
-          cp -r ./docs/.vuepress/dist ./
+          cp -r ./docs/.vitepress/dist ./
           rm -rf docs
           mv dist docs
       - name: usegit
