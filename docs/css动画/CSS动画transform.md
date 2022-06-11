@@ -54,7 +54,7 @@
 
 ### translate
 
-```CSS
+```css
 .class{
   transform:translate(x,y);/* 或者分开写 */
   transform:translateX(n);
@@ -79,7 +79,7 @@
 }
 ```
 
-### [旋转rotate()](./css样式/形状/形状.md#菱形图片04菱形html)
+### 旋转rotate()
 
 >正值是顺时针旋转,负值是逆时针旋转
 
@@ -125,11 +125,11 @@
 3. zoom缩放中心坐标系相对于元素的左上角,并且是不可以改变的
 4. zoom属性不会出翔trasnform属性后的变化.例如创建层叠上下文,影响fixed定位和overflow绝对定位的溢出隐藏
 
-### [skew()斜切](./css样式/形状/形状.md#平行四边形03平行四边形html)
+### skew()斜切
 
 >支持x,y两个方向的斜切变换.并且支持所有的角度变换
 
-```CSS
+```css
 .class{
   transform:skew(x,y);/* 或者分开写 */
   transform:skewX(n);
@@ -306,6 +306,7 @@ img{
   Untitled</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+
 ### backface-visibility
 
 > css世界中一个元素 背面会表现为其正唛你图像的镜像.因此,当我们使用翻转效果的是背面转向用户面前的时候,显示的是该元素的正面的图像镜像

@@ -156,7 +156,7 @@ grid-template-rows: 25% 100px auto 60px;
 }
 ```
 
-* fr的总和<1,按照容器尺寸和fr值的计算值的乘积划分(产生40%的空间没有网格元素)
+* fr的总和\<1,按照容器尺寸和fr值的计算值的乘积划分(产生40%的空间没有网格元素)
 * ![fr的和小于1](./img/frAndlessthan1.png)
 
 >部分列是固定的长度
@@ -543,7 +543,6 @@ container {
 .container{
   grid:100px 300px/auto-flow 200px;
 }
-
 /* 等同于 */
 .container{
   grid-template-rows: 100px 300px;
@@ -562,7 +561,6 @@ container {
 .container{
   grid:auto-flow dense 100px/1fr 2fr;
 }
-
 /* 等同于 */
 .container{
   grid-auto-flow:row dense;
@@ -617,7 +615,7 @@ container {
 * `justify-items`:定义元素在水平方向对齐表现
 * `align-items`:定义元素在网格中 的垂直表现
 
-#### [justify-items](./布局/grid-justify-items.html)
+#### justify-items
 
 * 语法:`justify-items:stretch | start | end | center`
   * `stretch`:元素水平尺寸拉伸,填满整个网格的水平空间
@@ -634,7 +632,7 @@ container {
 4. `right`:无视文档流方向,元素尺寸收缩.同时容器的网格线右对齐
 5. `legacy`:**新的默认值**(以前是auto).让关键字属性值,更有效的被子元素继承
 
-#### [align-items](./布局/grid-justify-items.html)
+#### align-items
 
 * 语法:
 
@@ -693,7 +691,7 @@ align-content: normal | stretch | start | end | center | space-between | space-a
 
 ## grid子项上的属性
 
-### [区间范围设置设置属性](布局/grid-template-start%20or....html)
+### 区间范围设置设置属性
 
 > 列范围属性`grid-column-start/grid-column-end`和行范围设置`grid-row-start/grid-row-end`应用于grid子项通过指定grid子项的行和列来表明当前grid子项的占据范围
 
@@ -745,7 +743,7 @@ align-content: normal | stretch | start | end | center | space-between | space-a
    * 当前名称为\<name>的第\<inteder>个网格线.从定义上看需要多个网格线才能匹配
    * 如果没有多的相同名称的网格线.那么浏览器会自动创建符合数量的隐式网格,这些隐式网格的网格线都是指定这个名称
 
-   ```CSS
+   ```css
    .container{
       grid-template-columns: [A] 80px [B] auto [C] 100px [D];
       height: 100px;

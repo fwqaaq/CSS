@@ -137,7 +137,7 @@
 * `space-around`:表示每一个flex子项两侧都环绕互不干扰的等宽的空白间距,**并且两侧的空白只有中间空白宽度的一半**
 * `space-evenly`表示每一个flex子项**两侧空白间距完全与中间的空白间距相等**(视觉上表现为所有空白等分)
 
-### [align-items与align-self](./布局/flex-align-itmes.html)
+### align-items与align-self
 
 > align-items属性和align-self的区别是align-self属性的是设置在某一个flex子项,而align-items是设置在flex容器的元素上.并且align-self的属性初始值是auto
 
@@ -156,7 +156,7 @@
 
 * `align-self`属性设置的是某个具体的flex子项的垂直对齐方式
 
-### [align-content](./布局/flex-align-content.html)
+### align-content
 
 > `align-content`属性和`align-items`属性的区别在于`align-items`属性是每一个flex子项的垂直对齐方式,而`align-content`属性将**所有flex子项作为一个整体进行垂直对齐设置**
 
@@ -249,7 +249,7 @@ flex: 1 1 100px;
      * 如果`flex-shrink`属性值**总和大于1**,则收缩完全,每一个元素的收缩尺寸的比例和flex-shrink属性值的比例一样大
 3. `flex-basis`属性则是指定的分配基础尺寸,默认值是`auto`
 
-> [实现](./布局/flex-shrink.html):可以打开试试
+> 实现
 
 1. 当容器的尺寸足够时,a,b,c三个元素由于设置了`flex-grow:0`,所以弹性元素只有`flex-grow:1`的d,e两个元素会分配剩余空间
 2. 当容器尺寸继续缩小,d,e两个元素也会越来越小,直到保底的20px.到达剩余空间不足的临界状态
@@ -279,7 +279,7 @@ flex: 1 1 100px;
   * 但是`flex:1`在容器不足时会优先最小化内容的尺寸
   * `flex:auto`在容器不足时会优先最大化内容的尺寸
 
-* [实现](./布局/flex-auto.html):尝试
+* 实现
 * 更加清晰的展示了`flex:1`的尺寸会优先牺牲自己的尺寸,而`flex:auto`会优先扩展自己的尺寸
 
 * 如果希望元素充分利用剩余空间同时不会侵占其他元素的宽度时(适合使用`flex:1`)
@@ -320,7 +320,7 @@ flex: 1 1 100px;
 
 #### 理解最小尺寸
 
-* [文字溢出](./布局/flex-%E6%9C%80%E5%B0%8F%E5%B0%BA%E5%AF%B8.html)
+* 文字溢出
 * 当我们设置`width:100px`的flex子项出现了文字那日饿哦给你溢出flex子项的情况
 * <span style="color:red">由于`flex-basis`属性下的最小尺寸是由内容决定的</span>,而width属性下的最小尺寸是由width属性的计算值决定的
   * 最小尺寸收**最小内容宽度**,**width属性**和**min-width属性**共同影响
@@ -336,7 +336,7 @@ flex: 1 1 100px;
 
 > min-width属性和max-width属性也能够很有效地限制flex子项的尺寸
 
-* [适用于单行文字溢出](./布局/flex-%E5%8D%95%E8%A1%8C%E6%96%87%E5%AD%97%E6%BA%A2%E5%87%BA.html)
+* 适用于单行文字溢出
 
 1. 由于width属性和flex-basis属性都没有设置,因此基础尺寸就是内容尺寸(最大内容宽度)
 2. flex-shrink属性值是默认值1.其内容超出,弹性效果可以执行

@@ -4,7 +4,7 @@
 
 * shapes布局相关的属性:`shape-outside`,`shape-margin`和`shape-image-threshold`
 
-## [shape-outside](../css布局/布局/shape.html)
+## shape-outside
 
 > shape-outside属性事shapes布局的核心,它支持一下4类
 

@@ -60,7 +60,7 @@ export default defineConfig({
         items: [
           { text: "CSS动画", link: "/css动画/CSS动画" },
           { text: "渐变", link: "/css动画/渐变" },
-          { text: "CSS动画2D~3D", link: "/css动画/CSS动画transform" },
+          { text: "CSS动画transform", link: "/css动画/CSS动画transform" },
           { text: "CSS过渡", link: "/css动画/CSS过渡" },
         ]
       },
