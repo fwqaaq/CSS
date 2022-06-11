@@ -100,7 +100,8 @@ export default defineConfig({
           { text: "居中", link: "/css技巧/居中" },
           { text: "用户行为", link: "/css技巧/用户行为" },
           { text: "layer", link: "/css技巧/layer" },
-          { text: "文字换行", link: "/css技巧/文字换行" }
+          { text: "文字换行", link: "/css技巧/文字换行" },
+          { text: "css声明的优先级", link: "/css技巧/css声明的优先级" },
         ]
       }
     ]
