@@ -98,7 +98,7 @@ export default defineConfig({
         items: [
           { text: "HTML内置行为和应用", link: "/css技巧/HTML内置行为和应用" },
           { text: "居中", link: "/css技巧/居中" },
-          { text: "用户行为", link: "/css技巧/用户行为" },
+          { text: "用户行为及网站换肤", link: "/css技巧/用户行为及网站换肤" },
           { text: "layer", link: "/css技巧/layer" },
           { text: "文字换行", link: "/css技巧/文字换行" },
           { text: "css声明的优先级", link: "/css技巧/css声明的优先级" },

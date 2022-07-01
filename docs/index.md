@@ -59,4 +59,5 @@
 * [用户行为](css技巧/用户行为.md)
 * [居中技巧](css技巧/居中.md)
 * [layer](css技巧/layer.md)
+* [css声明的优先级](css技巧/css声明的优先级.md)
 * [文字换行](css技巧/文字换行.md)
