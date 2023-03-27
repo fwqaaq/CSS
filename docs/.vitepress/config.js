@@ -42,9 +42,9 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       {
-        text: 'fw的css学习历程',
+        text: 'fw 的 css 学习历程',
         items: [
-          { text: 'Github', link: 'https://github.com/Jack-Zhang-1314' }
+          { text: 'Github', link: 'https://github.com/fwqaaq' }
         ]
       }
     ],
