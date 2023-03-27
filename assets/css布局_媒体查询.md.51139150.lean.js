@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as l,N as n}from"./chunks/framework.8361052b.js";const d=JSON.parse('{"title":"媒体查询","description":"","frontmatter":{},"headers":[],"relativePath":"css布局/媒体查询.md"}'),o={name:"css布局/媒体查询.md"},p=n("",95),e=[p];function t(c,r,D,y,i,F){return l(),a("div",null,e)}const A=s(o,[["render",t]]);export{d as __pageData,A as default};

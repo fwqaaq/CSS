@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,N as l}from"./chunks/framework.8361052b.js";const A=JSON.parse('{"title":"环境配置","description":"","frontmatter":{},"headers":[],"relativePath":"scss/环境配置.md"}'),e={name:"scss/环境配置.md"},o=l("",35),p=[o];function t(c,r,i,y,d,C){return n(),a("div",null,p)}const u=s(e,[["render",t]]);export{A as __pageData,u as default};

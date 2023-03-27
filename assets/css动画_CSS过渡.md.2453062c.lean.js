@@ -1,0 +1,5 @@
+import{_ as a,c as n,o as e,N as s,x as o}from"./chunks/framework.8361052b.js";const l="/CSS/assets/ease.115c5848.png",t="/CSS/assets/ease-in.6c650b85.png",i="/CSS/assets/ease-out.228b449f.png",c="/CSS/assets/ease-in-out.c077b6c4.png",p="/CSS/assets/BesselFn.989b05e5.png",r="/CSS/assets/Besselcurve.6ad01006.gif",f=JSON.parse('{"title":"CSS动画","description":"","frontmatter":{},"headers":[],"relativePath":"css动画/CSS过渡.md"}'),d={name:"css动画/CSS过渡.md"},u=s("",12),y=o("iframe",{height:"300",style:{width:"100%"},scrolling:"no",title:"Untitled",src:"https://codepen.io/jack-zhang-1314/embed/QWawmKq?default-tab=html%2Cresult",frameborder:"no",loading:"lazy",allowtransparency:"true",allowfullscreen:"true"},`
+  See the Pen <a href="https://codepen.io/jack-zhang-1314/pen/QWawmKq">
+  Untitled</a> by Jack-Zhang-1314 (<a href="https://codepen.io/jack-zhang-1314">@jack-zhang-1314</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+`,-1),C=s("",23),h=[u,y,C];function b(A,D,_,m,g,S){return e(),n("div",null,h)}const k=a(d,[["render",b]]);export{f as __pageData,k as default};

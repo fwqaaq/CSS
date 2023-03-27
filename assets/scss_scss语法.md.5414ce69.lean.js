@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as n,N as l}from"./chunks/framework.8361052b.js";const A=JSON.parse('{"title":"SassScript","description":"","frontmatter":{},"headers":[],"relativePath":"scss/scss语法.md"}'),p={name:"scss/scss语法.md"},o=l("",229),e=[o];function t(c,r,D,y,C,F){return n(),a("div",null,e)}const d=s(p,[["render",t]]);export{A as __pageData,d as default};

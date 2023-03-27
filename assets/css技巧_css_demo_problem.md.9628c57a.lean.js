@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,N as l}from"./chunks/framework.8361052b.js";const A=JSON.parse('{"title":"problem","description":"","frontmatter":{},"headers":[],"relativePath":"css技巧/css_demo_problem.md"}'),o={name:"css技巧/css_demo_problem.md"},p=l("",11),t=[p];function e(c,r,D,y,C,F){return a(),n("div",null,t)}const d=s(o,[["render",e]]);export{A as __pageData,d as default};

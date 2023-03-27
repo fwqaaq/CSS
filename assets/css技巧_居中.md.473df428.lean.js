@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,N as l}from"./chunks/framework.8361052b.js";const i=JSON.parse('{"title":"居中","description":"","frontmatter":{},"headers":[],"relativePath":"css技巧/居中.md"}'),p={name:"css技巧/居中.md"},o=l("",13),e=[o];function c(t,D,r,C,y,F){return a(),n("div",null,e)}const d=s(p,[["render",c]]);export{i as __pageData,d as default};

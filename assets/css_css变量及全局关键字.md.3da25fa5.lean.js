@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as l,N as n}from"./chunks/framework.8361052b.js";const A=JSON.parse('{"title":"css","description":"","frontmatter":{},"headers":[],"relativePath":"css/css变量及全局关键字.md"}'),p={name:"css/css变量及全局关键字.md"},o=n("",93),e=[o];function t(c,r,i,D,y,F){return l(),a("div",null,e)}const d=s(p,[["render",t]]);export{A as __pageData,d as default};

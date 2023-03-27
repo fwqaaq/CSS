@@ -1,0 +1,1 @@
+import{_ as s,c as l,o as a,N as o}from"./chunks/framework.8361052b.js";const u=JSON.parse('{"title":"用户行为以及网站换肤","description":"","frontmatter":{},"headers":[],"relativePath":"css技巧/用户行为及网站换肤.md"}'),n={name:"css技巧/用户行为及网站换肤.md"},e=o("",19),p=[e];function t(c,r,D,F,y,i){return a(),l("div",null,p)}const C=s(n,[["render",t]]);export{u as __pageData,C as default};

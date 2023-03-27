@@ -1,0 +1,1 @@
+import{_ as s,c as l,o as a,N as n}from"./chunks/framework.8361052b.js";const u=JSON.parse('{"title":"css","description":"","frontmatter":{},"headers":[],"relativePath":"css/css选择器.md"}'),o={name:"css/css选择器.md"},p=n("",113),t=[p];function e(c,r,F,i,D,y){return a(),l("div",null,t)}const C=s(o,[["render",e]]);export{u as __pageData,C as default};

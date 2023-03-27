@@ -1,0 +1,1 @@
+import{_ as l,c as e,o,N as s}from"./chunks/framework.8361052b.js";const y=JSON.parse('{"title":"flex布局","description":"","frontmatter":{},"headers":[],"relativePath":"css布局/flex.md"}'),n={name:"css布局/flex.md"},a=s("",80),t=[a];function c(i,p,r,d,f,x){return o(),e("div",null,t)}const u=l(n,[["render",c]]);export{y as __pageData,u as default};

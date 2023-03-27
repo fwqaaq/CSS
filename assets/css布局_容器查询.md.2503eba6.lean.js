@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,N as l}from"./chunks/framework.8361052b.js";const d=JSON.parse('{"title":"容器查询（container）","description":"","frontmatter":{},"headers":[],"relativePath":"css布局/容器查询.md"}'),o={name:"css布局/容器查询.md"},e=l("",23),p=[e];function t(c,r,i,D,y,F){return a(),n("div",null,p)}const A=s(o,[["render",t]]);export{d as __pageData,A as default};

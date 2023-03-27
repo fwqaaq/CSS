@@ -1,0 +1,1 @@
+import{_ as s,c as a,o as l,N as n}from"./chunks/framework.8361052b.js";const A=JSON.parse('{"title":"@layer","description":"","frontmatter":{},"headers":[],"relativePath":"css技巧/layer.md"}'),p={name:"css技巧/layer.md"},o=n("",47),e=[o];function c(t,r,D,y,C,F){return l(),a("div",null,e)}const d=s(p,[["render",c]]);export{A as __pageData,d as default};
